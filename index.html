@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Josh Bazzano | Quantitative Finance</title>
+    <title>Josh Bazzano | Quantitative Analyst & Researcher</title>
+    <meta name="description" content="Quantitative Analyst specializing in algorithmic trading, statistical modeling, machine learning, and data-driven research. Expert in Python, SQL, and financial modeling.">
+    <meta name="keywords" content="Quantitative Analyst, Quantitative Researcher, Algorithmic Trading, Machine Learning, Python, SQL, Statistical Modeling, Data Science, Financial Modeling, Deep Learning">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -11,6 +13,7 @@
         :root {
             --primary: #0a192f;
             --secondary: #112240;
+            --tertiary: #1d3a5c;
             --accent: #64ffda;
             --accent-hover: #4cd9b4;
             --text-primary: #ccd6f6;
@@ -43,11 +46,11 @@
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 1.5rem 5%;
+            padding: 1.25rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(10, 25, 47, 0.85);
+            background: rgba(10, 25, 47, 0.9);
             backdrop-filter: blur(10px);
             z-index: 1000;
             border-bottom: 1px solid rgba(100, 255, 218, 0.1);
@@ -64,43 +67,29 @@
 
         .nav-links {
             display: flex;
-            gap: 2.5rem;
+            gap: 2rem;
             list-style: none;
+            align-items: center;
         }
 
         .nav-links a {
             color: var(--text-secondary);
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 500;
             transition: color 0.3s ease;
             position: relative;
-        }
-
-        .nav-links a::before {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent);
-            transition: width 0.3s ease;
         }
 
         .nav-links a:hover {
             color: var(--accent);
         }
 
-        .nav-links a:hover::before {
-            width: 100%;
-        }
-
         .nav-links .num {
             color: var(--accent);
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
-            margin-right: 0.3rem;
+            font-size: 0.75rem;
+            margin-right: 0.25rem;
         }
 
         /* Hero Section */
@@ -118,7 +107,7 @@
             font-family: 'JetBrains Mono', monospace;
             color: var(--accent);
             font-size: 1rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
             opacity: 0;
             animation: fadeInUp 0.6s ease forwards;
         }
@@ -133,21 +122,45 @@
         }
 
         .hero h2 {
-            font-size: clamp(1.8rem, 4vw, 3.5rem);
+            font-size: clamp(1.5rem, 4vw, 2.75rem);
             font-weight: 600;
             color: var(--text-secondary);
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             opacity: 0;
             animation: fadeInUp 0.6s ease 0.2s forwards;
         }
 
-        .hero p {
-            max-width: 540px;
+        .hero-description {
+            max-width: 600px;
             color: var(--text-secondary);
             font-size: 1.1rem;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
             opacity: 0;
             animation: fadeInUp 0.6s ease 0.3s forwards;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease 0.35s forwards;
+        }
+
+        .stat {
+            text-align: left;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
         }
 
         .hero-cta {
@@ -159,7 +172,7 @@
 
         .btn {
             padding: 1rem 2rem;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 500;
             border-radius: 4px;
             text-decoration: none;
@@ -191,7 +204,7 @@
 
         /* Section Styles */
         section {
-            padding: 6rem 10%;
+            padding: 5rem 10%;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -199,11 +212,11 @@
         .section-header {
             display: flex;
             align-items: center;
-            margin-bottom: 3rem;
+            margin-bottom: 2.5rem;
         }
 
         .section-header h2 {
-            font-size: 1.8rem;
+            font-size: 1.75rem;
             font-weight: 600;
             color: var(--white);
         }
@@ -211,7 +224,7 @@
         .section-header .num {
             font-family: 'JetBrains Mono', monospace;
             color: var(--accent);
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             margin-right: 0.75rem;
         }
 
@@ -234,8 +247,12 @@
 
         .about-text p {
             color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-            font-size: 1.05rem;
+            margin-bottom: 1.25rem;
+            font-size: 1rem;
+        }
+
+        .about-text strong {
+            color: var(--white);
         }
 
         .about-text a {
@@ -247,24 +264,56 @@
             text-decoration: underline;
         }
 
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 0.75rem;
+        .highlight-box {
+            background: rgba(100, 255, 218, 0.05);
+            border-left: 3px solid var(--accent);
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+            border-radius: 0 4px 4px 0;
         }
 
-        .skill-item {
-            display: flex;
-            align-items: center;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.85rem;
-            color: var(--text-secondary);
+        .highlight-box p {
+            margin-bottom: 0;
+            font-size: 0.95rem;
         }
 
-        .skill-item::before {
-            content: '▹';
+        .skills-container {
+            margin-top: 2rem;
+        }
+
+        .skills-category {
+            margin-bottom: 1.5rem;
+        }
+
+        .skills-category h4 {
             color: var(--accent);
-            margin-right: 0.75rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.75rem;
+        }
+
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background: rgba(100, 255, 218, 0.1);
+            color: var(--accent);
+            padding: 0.35rem 0.75rem;
+            border-radius: 3px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            border: 1px solid rgba(100, 255, 218, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: rgba(100, 255, 218, 0.2);
+            transform: translateY(-1px);
         }
 
         .about-image {
@@ -274,9 +323,8 @@
         .about-image-wrapper {
             position: relative;
             width: 100%;
-            max-width: 300px;
+            max-width: 280px;
             border-radius: 4px;
-            background: var(--accent);
         }
 
         .about-image-wrapper::before {
@@ -300,71 +348,146 @@
         .profile-placeholder {
             width: 100%;
             aspect-ratio: 1;
-            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--tertiary) 100%);
             border-radius: 4px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 4rem;
+            font-size: 3.5rem;
             color: var(--accent);
             font-family: 'JetBrains Mono', monospace;
             font-weight: 700;
+            border: 1px solid rgba(100, 255, 218, 0.2);
         }
 
-        /* Experience Section */
-        .experience-grid {
+        /* Career Highlights */
+        .highlights-grid {
             display: grid;
-            gap: 2rem;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 3rem;
         }
 
-        .experience-card {
+        .highlight-card {
             background: rgba(17, 34, 64, 0.5);
             border: 1px solid rgba(100, 255, 218, 0.1);
             border-radius: 4px;
-            padding: 2rem;
+            padding: 1.5rem;
             transition: all 0.3s ease;
         }
 
-        .experience-card:hover {
+        .highlight-card:hover {
             border-color: var(--accent);
-            transform: translateY(-5px);
+            transform: translateY(-3px);
             box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
+        }
+
+        .highlight-metric {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--accent);
+            font-family: 'JetBrains Mono', monospace;
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight-description {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* Experience Section */
+        .experience-timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: rgba(100, 255, 218, 0.2);
+        }
+
+        .experience-item {
+            position: relative;
+            margin-bottom: 3rem;
+            padding-left: 2rem;
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            background: var(--primary);
+            border: 2px solid var(--accent);
+            border-radius: 50%;
         }
 
         .experience-header {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
         }
 
         .experience-title {
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             font-weight: 600;
             color: var(--white);
         }
 
-        .experience-role {
+        .experience-company {
             color: var(--accent);
-            font-size: 0.95rem;
-            margin-top: 0.25rem;
+            font-size: 1rem;
+        }
+
+        .experience-location {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
         }
 
         .experience-date {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: var(--text-secondary);
+            background: rgba(100, 255, 218, 0.1);
+            padding: 0.25rem 0.75rem;
+            border-radius: 3px;
         }
 
-        .experience-description {
+        .experience-bullets {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .experience-bullets li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.75rem;
             color: var(--text-secondary);
             font-size: 0.95rem;
+        }
+
+        .experience-bullets li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
         }
 
         /* Projects Section */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 1.5rem;
         }
 
@@ -379,7 +502,7 @@
         }
 
         .project-card:hover {
-            transform: translateY(-7px);
+            transform: translateY(-5px);
             border-color: var(--accent);
             box-shadow: 0 20px 30px -15px rgba(2, 12, 27, 0.7);
         }
@@ -387,22 +510,16 @@
         .project-header {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.5rem;
+            align-items: flex-start;
+            margin-bottom: 1.25rem;
         }
 
         .project-icon {
             font-size: 2.5rem;
         }
 
-        .project-links {
-            display: flex;
-            gap: 1rem;
-        }
-
         .project-links a {
             color: var(--text-secondary);
-            font-size: 1.25rem;
             transition: color 0.3s ease;
         }
 
@@ -411,7 +528,7 @@
         }
 
         .project-card h3 {
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             font-weight: 600;
             color: var(--white);
             margin-bottom: 0.75rem;
@@ -426,73 +543,73 @@
             color: var(--text-secondary);
             font-size: 0.95rem;
             flex-grow: 1;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
         }
 
         .project-tech {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.75rem;
+            gap: 0.5rem;
         }
 
         .project-tech span {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: var(--text-secondary);
+            background: rgba(100, 255, 218, 0.05);
+            padding: 0.25rem 0.5rem;
+            border-radius: 2px;
         }
 
-        /* Featured Project */
-        .featured-project {
+        /* Education Section */
+        .education-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin-bottom: 4rem;
-            align-items: center;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
         }
 
-        .featured-image {
-            background: linear-gradient(135deg, rgba(100, 255, 218, 0.1) 0%, rgba(17, 34, 64, 0.8) 100%);
+        .education-card {
+            background: rgba(17, 34, 64, 0.5);
+            border: 1px solid rgba(100, 255, 218, 0.1);
             border-radius: 4px;
-            aspect-ratio: 16/10;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            border: 1px solid rgba(100, 255, 218, 0.2);
+            padding: 1.75rem;
+            transition: all 0.3s ease;
         }
 
-        .featured-content {
-            padding: 1rem;
+        .education-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-3px);
         }
 
-        .featured-label {
-            font-family: 'JetBrains Mono', monospace;
-            color: var(--accent);
-            font-size: 0.85rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .featured-content h3 {
-            font-size: 1.75rem;
+        .education-degree {
+            font-size: 1.1rem;
             font-weight: 600;
             color: var(--white);
-            margin-bottom: 1.5rem;
+            margin-bottom: 0.25rem;
         }
 
-        .featured-description {
-            background: var(--secondary);
-            padding: 1.5rem;
-            border-radius: 4px;
-            color: var(--text-secondary);
+        .education-school {
+            color: var(--accent);
             font-size: 0.95rem;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
+            margin-bottom: 0.25rem;
+        }
+
+        .education-location {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .education-details {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            line-height: 1.5;
         }
 
         /* Contact Section */
         .contact {
             text-align: center;
-            padding: 8rem 10%;
+            padding: 6rem 10%;
         }
 
         .contact h2 {
@@ -511,15 +628,15 @@
 
         .contact p {
             color: var(--text-secondary);
-            max-width: 500px;
-            margin: 0 auto 2.5rem;
+            max-width: 550px;
+            margin: 0 auto 2rem;
             font-size: 1.05rem;
         }
 
-        .contact-info {
+        .contact-grid {
             display: flex;
             justify-content: center;
-            gap: 3rem;
+            gap: 2rem;
             margin-bottom: 2.5rem;
             flex-wrap: wrap;
         }
@@ -527,27 +644,33 @@
         .contact-item {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
+            gap: 0.5rem;
             color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item:hover {
+            color: var(--accent);
         }
 
         .contact-item span {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
-        /* Social Links */
         .social-links {
             display: flex;
             justify-content: center;
-            gap: 2rem;
-            margin-top: 3rem;
+            gap: 1.5rem;
+            margin-top: 2.5rem;
         }
 
         .social-links a {
             color: var(--text-secondary);
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             transition: all 0.3s ease;
+            padding: 0.5rem;
         }
 
         .social-links a:hover {
@@ -562,15 +685,12 @@
             color: var(--text-secondary);
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.8rem;
+            border-top: 1px solid rgba(100, 255, 218, 0.1);
         }
 
         footer a {
             color: var(--accent);
             text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
         }
 
         /* Animations */
@@ -582,50 +702,6 @@
             to {
                 opacity: 1;
                 transform: translateY(0);
-            }
-        }
-
-        /* Responsive */
-        @media (max-width: 968px) {
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-
-            .about-image {
-                display: flex;
-                justify-content: center;
-            }
-
-            .featured-project {
-                grid-template-columns: 1fr;
-            }
-
-            .nav-links {
-                display: none;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .hero {
-                padding: 0 5%;
-            }
-
-            section {
-                padding: 4rem 5%;
-            }
-
-            .hero-cta {
-                flex-direction: column;
-            }
-
-            .btn {
-                text-align: center;
-            }
-
-            .contact-info {
-                flex-direction: column;
-                align-items: center;
-                gap: 1rem;
             }
         }
 
@@ -658,13 +734,12 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 1.5rem;
-            padding-bottom: 1.5rem;
+            gap: 1.25rem;
+            padding-bottom: 1.25rem;
         }
 
         .side-social a {
             color: var(--text-secondary);
-            font-size: 1.25rem;
             transition: all 0.3s ease;
         }
 
@@ -684,9 +759,9 @@
             color: var(--text-secondary);
             text-decoration: none;
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             letter-spacing: 0.1em;
-            padding-bottom: 1.5rem;
+            padding-bottom: 1.25rem;
             transition: all 0.3s ease;
         }
 
@@ -695,9 +770,61 @@
             transform: translateY(-3px);
         }
 
+        /* Responsive */
         @media (max-width: 1080px) {
             .side-element {
                 display: none;
+            }
+        }
+
+        @media (max-width: 968px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                display: flex;
+                justify-content: center;
+            }
+
+            .highlights-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero-stats {
+                flex-wrap: wrap;
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero {
+                padding: 0 5%;
+            }
+
+            section {
+                padding: 3rem 5%;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+            }
+
+            .btn {
+                text-align: center;
+            }
+
+            .contact-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -710,7 +837,8 @@
             <li><a href="#about"><span class="num">01.</span>About</a></li>
             <li><a href="#experience"><span class="num">02.</span>Experience</a></li>
             <li><a href="#projects"><span class="num">03.</span>Projects</a></li>
-            <li><a href="#contact"><span class="num">04.</span>Contact</a></li>
+            <li><a href="#education"><span class="num">04.</span>Education</a></li>
+            <li><a href="#contact"><span class="num">05.</span>Contact</a></li>
             <li><a href="https://github.com/Joshbazz" class="btn btn-primary" target="_blank">Resume</a></li>
         </ul>
     </nav>
@@ -724,15 +852,15 @@
             <a href="https://linkedin.com/in/joshbazzano" target="_blank" aria-label="LinkedIn">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
             </a>
-            <a href="https://twitter.com/joshbazzano" target="_blank" aria-label="Twitter">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+            <a href="https://substack.com/@joshbazzano" target="_blank" aria-label="Substack">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v2H4zM4 8h16v2H4zM4 12h16l-8 10-8-10z"></path></svg>
             </a>
         </div>
     </div>
 
     <div class="side-element right">
         <div class="side-email">
-            <a href="mailto:josh@joshbazzano.com">josh@joshbazzano.com</a>
+            <a href="mailto:joshbazz36@gmail.com">joshbazz36@gmail.com</a>
         </div>
     </div>
 
@@ -740,14 +868,28 @@
     <section class="hero">
         <p class="hero-intro">Hi, my name is</p>
         <h1>Josh Bazzano.</h1>
-        <h2>I build things for quantitative finance.</h2>
-        <p>
-            I'm a FinTech specialist focused on algorithmic trading, data science, and quantitative analysis.
-            Currently completing the University of Miami FinTech Bootcamp while building tools that bridge
-            the gap between financial theory and practical implementation.
+        <h2>Quantitative Analyst & Researcher</h2>
+        <p class="hero-description">
+            I translate complex quantitative insights into scalable, revenue-generating decision systems across live markets.
+            Specializing in <strong>algorithmic trading</strong>, <strong>statistical modeling</strong>, and <strong>machine learning</strong>
+            with expertise in Python-based analytics and SQL-driven data pipelines.
         </p>
+        <div class="hero-stats">
+            <div class="stat">
+                <div class="stat-value">$1.1M+</div>
+                <div class="stat-label">Revenue Generated</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">300%</div>
+                <div class="stat-label">Portfolio Growth</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">15+</div>
+                <div class="stat-label">Markets Analyzed</div>
+            </div>
+        </div>
         <div class="hero-cta">
-            <a href="#projects" class="btn btn-primary">View My Work</a>
+            <a href="#experience" class="btn btn-primary">View Experience</a>
             <a href="#contact" class="btn btn-secondary">Get In Touch</a>
         </div>
     </section>
@@ -761,31 +903,75 @@
         <div class="about-content">
             <div class="about-text">
                 <p>
-                    Hello! I'm Josh, a quantitative finance enthusiast based in <strong>Miami, FL</strong> with a deep passion
-                    for technology, cryptocurrency, and finance. My journey has taken me through diverse roles as an
-                    <strong>Analyst</strong>, <strong>Trader</strong>, and <strong>Developer</strong>, giving me a unique perspective
-                    on the intersection of markets and technology.
+                    I'm a <strong>Quantitative Analyst</strong> and <strong>Quantitative Researcher</strong> with deep expertise in
+                    <strong>data-driven research</strong>, <strong>statistical modeling</strong>, and <strong>algorithmic strategy</strong>
+                    spanning finance and technology. Based in <strong>New York, NY</strong>, I build systems that transform complex
+                    quantitative insights into scalable, revenue-generating decision engines across live markets.
                 </p>
                 <p>
-                    Currently, I'm completing the <a href="https://bootcamp.miami.edu/fintech/" target="_blank">University of Miami FinTech Bootcamp</a>,
-                    where I'm deepening my expertise in Python, machine learning, and blockchain technologies.
-                    I specialize in technical writing and research, with SME experience in creating clear,
-                    actionable documentation.
+                    I'm equally fluent in traditional <strong>financial analysis</strong> and modern <strong>big data</strong> and
+                    <strong>ML methodologies</strong>, leveraging <strong>Python-based analytics</strong>, <strong>SQL-driven data pipelines</strong>,
+                    and <strong>deep learning techniques</strong> to design and implement market-facing strategies under real-world constraints.
                 </p>
-                <p>
-                    I'm actively seeking <strong>full-time opportunities</strong> and am open to collaboration on
-                    interesting projects and consulting engagements.
-                </p>
-                <p>Here are some technologies I've been working with:</p>
-                <div class="skills-grid">
-                    <span class="skill-item">Python</span>
-                    <span class="skill-item">Pandas & NumPy</span>
-                    <span class="skill-item">Machine Learning</span>
-                    <span class="skill-item">Algorithmic Trading</span>
-                    <span class="skill-item">SQL & Databases</span>
-                    <span class="skill-item">Blockchain/Web3</span>
-                    <span class="skill-item">Data Visualization</span>
-                    <span class="skill-item">Technical Writing</span>
+
+                <div class="highlight-box">
+                    <p>
+                        Hands-on experience across <strong>institutional trading</strong>, <strong>portfolio construction</strong>,
+                        <strong>pricing optimization</strong>, and <strong>research automation</strong>, consistently bridging
+                        technical execution and business impact through rigorous modeling, stakeholder communication, and end-to-end ownership.
+                    </p>
+                </div>
+
+                <div class="skills-container">
+                    <div class="skills-category">
+                        <h4>Technical Tools</h4>
+                        <div class="skills-grid">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">Pandas</span>
+                            <span class="skill-tag">NumPy</span>
+                            <span class="skill-tag">SciPy</span>
+                            <span class="skill-tag">TensorFlow</span>
+                            <span class="skill-tag">Keras</span>
+                            <span class="skill-tag">Optuna</span>
+                            <span class="skill-tag">SQL</span>
+                            <span class="skill-tag">PostgreSQL</span>
+                            <span class="skill-tag">Snowflake</span>
+                            <span class="skill-tag">AWS</span>
+                            <span class="skill-tag">Backtesting.py</span>
+                            <span class="skill-tag">CCXT</span>
+                            <span class="skill-tag">Excel VBA</span>
+                        </div>
+                    </div>
+                    <div class="skills-category">
+                        <h4>Core Competencies</h4>
+                        <div class="skills-grid">
+                            <span class="skill-tag">Quantitative Research</span>
+                            <span class="skill-tag">Statistical Modeling</span>
+                            <span class="skill-tag">Algorithmic Trading</span>
+                            <span class="skill-tag">Machine Learning</span>
+                            <span class="skill-tag">Deep Learning</span>
+                            <span class="skill-tag">Time Series Analysis</span>
+                            <span class="skill-tag">Risk Management</span>
+                            <span class="skill-tag">Portfolio Construction</span>
+                            <span class="skill-tag">Pricing Optimization</span>
+                            <span class="skill-tag">Backtesting</span>
+                        </div>
+                    </div>
+                    <div class="skills-category">
+                        <h4>Domain Expertise</h4>
+                        <div class="skills-grid">
+                            <span class="skill-tag">Financial Modeling</span>
+                            <span class="skill-tag">Market Microstructure</span>
+                            <span class="skill-tag">Predictive Analytics</span>
+                            <span class="skill-tag">Feature Engineering</span>
+                            <span class="skill-tag">Data Visualization</span>
+                            <span class="skill-tag">Blockchain Analysis</span>
+                            <span class="skill-tag">DeFi</span>
+                            <span class="skill-tag">Smart Contracts</span>
+                            <span class="skill-tag">Monte Carlo Simulation</span>
+                            <span class="skill-tag">PCA</span>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="about-image">
@@ -796,51 +982,120 @@
         </div>
     </section>
 
+    <!-- Career Highlights -->
+    <section id="highlights">
+        <div class="section-header">
+            <span class="num">02.</span>
+            <h2>Career Highlights</h2>
+        </div>
+        <div class="highlights-grid">
+            <div class="highlight-card">
+                <div class="highlight-metric">$1.1M+</div>
+                <div class="highlight-description">
+                    Generated in ticket-trading revenue at Seatsnob LLC through data-driven trade selection,
+                    positive expected value modeling, and disciplined quantitative analysis achieving a 35% profit margin.
+                </div>
+            </div>
+            <div class="highlight-card">
+                <div class="highlight-metric">300%</div>
+                <div class="highlight-description">
+                    Contributed to institutional crypto lending portfolio growth at TradeStation Crypto,
+                    scaling from $60M to approximately $180M through analytical modeling and scalable loan origination workflows.
+                </div>
+            </div>
+            <div class="highlight-card">
+                <div class="highlight-metric">15 Markets</div>
+                <div class="highlight-description">
+                    Built historical implied volatility models across commodity, currency, and index futures markets
+                    at Mt. Lucas Management, delivering analytical tools for derivatives pricing and risk monitoring.
+                </div>
+            </div>
+            <div class="highlight-card">
+                <div class="highlight-metric">120-Page Report</div>
+                <div class="highlight-description">
+                    Authored comprehensive quantitative research analyzing multi-season NFL ticket market behavior
+                    with 1K+ generated visualizations, probabilistic price modeling, and historical trend analysis.
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Experience Section -->
     <section id="experience">
         <div class="section-header">
-            <span class="num">02.</span>
-            <h2>Experience & Education</h2>
+            <span class="num">03.</span>
+            <h2>Professional Experience</h2>
         </div>
-        <div class="experience-grid">
-            <div class="experience-card">
+        <div class="experience-timeline">
+            <!-- Intune Analytics -->
+            <div class="experience-item">
                 <div class="experience-header">
                     <div>
-                        <div class="experience-title">University of Miami</div>
-                        <div class="experience-role">FinTech Bootcamp</div>
+                        <div class="experience-title">Quantitative Analyst</div>
+                        <div class="experience-company">Intune Analytics <span class="experience-location">| Remote</span></div>
                     </div>
-                    <div class="experience-date">Current</div>
+                    <span class="experience-date">Aug 2024 – Present</span>
                 </div>
-                <p class="experience-description">
-                    Intensive program covering Python, machine learning, blockchain, algorithmic trading,
-                    and financial analysis. Building practical projects that solve real-world financial challenges.
-                </p>
+                <ul class="experience-bullets">
+                    <li>Conduct quantitative research and analytics to support a live market-making ticket strategy, focusing on database manipulation, pricing optimization, risk management, and strategy development using Python-driven automation and SQL-based data extraction</li>
+                    <li>Designed a relative value pricing strategy to enhance bid-offer decision quality, contributing to smarter market participation by assisting with data model architecture, exploratory analysis across high-volume datasets, and automated strategy implementation</li>
+                    <li>Authored a 120-page quantitative research report analyzing multi-season NFL ticket market behavior, incorporating 1K+ generated visualizations, probabilistic price capitulation modeling, and historical trend analysis</li>
+                    <li>Partner closely with Revenue and Data teams as a technical liaison, translating quantitative findings into business-oriented logic and operational tools that enable non-technical stakeholders to apply analytical insights effectively</li>
+                    <li>Support continuous strategy refinement through iterative testing, data validation, and performance monitoring, ensuring analytical outputs remain aligned with real-time market conditions and evolving revenue objectives</li>
+                </ul>
             </div>
-            <div class="experience-card">
+
+            <!-- Seatsnob -->
+            <div class="experience-item">
                 <div class="experience-header">
                     <div>
-                        <div class="experience-title">Research & Technical Writing</div>
-                        <div class="experience-role">Subject Matter Expert</div>
+                        <div class="experience-title">Quantitative Ticket Trader</div>
+                        <div class="experience-company">Seatsnob, LLC <span class="experience-location">| Miami, FL</span></div>
                     </div>
-                    <div class="experience-date">Ongoing</div>
+                    <span class="experience-date">Jan 2023 – Jun 2024</span>
                 </div>
-                <p class="experience-description">
-                    Creating comprehensive technical documentation and research pieces focused on algorithmic
-                    trading strategies, data science methodologies, and fintech innovations.
-                </p>
+                <ul class="experience-bullets">
+                    <li>Managed a personal portfolio of ticketed event positions across sports, concerts, and theatre, generating more than $1.1M in revenue and achieving a 35% profit margin through disciplined quantitative analysis and risk-aware trade execution</li>
+                    <li>Conducted extensive market research across secondary ticketing ecosystems, integrating SEO analytics, census and demographic data, precedent transaction analysis, and social media signals to inform demand forecasting and pricing hypotheses</li>
+                    <li>Performed statistical and historical data analysis on public and private sales datasets, testing trade hypotheses, analyzing primary versus secondary market dynamics, and constructing Excel-based models to identify positive expected value opportunities</li>
+                    <li>Built and scaled an international ticket portfolio using quantitative insights, market segmentation analysis, and real-time monitoring to optimize capital allocation and improve portfolio-level performance consistency</li>
+                </ul>
             </div>
-            <div class="experience-card">
+
+            <!-- TradeStation Crypto -->
+            <div class="experience-item">
                 <div class="experience-header">
                     <div>
-                        <div class="experience-title">Trading & Analysis</div>
-                        <div class="experience-role">Analyst & Trader</div>
+                        <div class="experience-title">Crypto Lending Sales Trader</div>
+                        <div class="experience-company">TradeStation Crypto, Inc. <span class="experience-location">| Miami, FL</span></div>
                     </div>
-                    <div class="experience-date">Previous</div>
+                    <span class="experience-date">Oct 2020 – Nov 2022</span>
                 </div>
-                <p class="experience-description">
-                    Developed trading strategies, conducted market analysis, and built quantitative models
-                    for portfolio optimization across traditional and cryptocurrency markets.
-                </p>
+                <ul class="experience-bullets">
+                    <li>Helped manage and scale an institutional crypto lending portfolio to approximately $180M, contributing to a 300% increase in assets through analytical modeling, collateral oversight, and structured loan evaluation processes</li>
+                    <li>Developed financial models to assess loan performance, counterparty exposure, and collateral adequacy, supporting informed decision-making for new originations and ongoing portfolio risk management</li>
+                    <li>Led user acceptance testing efforts for a proprietary Loan Management System, coordinating with developers and project managers to identify defects, validate workflows, and onboard institutional users effectively</li>
+                    <li>Conducted institutional counterparty onboarding, supporting negotiation of Master Lending Agreements and term sheets while maintaining analytical rigor in evaluating counterparty risk and deal economics</li>
+                    <li>Leveraged relationship management and market intelligence to source new business opportunities, aligning quantitative analysis with commercial growth objectives in a rapidly evolving digital asset environment</li>
+                </ul>
+            </div>
+
+            <!-- Mt. Lucas Management -->
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <div class="experience-title">Trading Assistant</div>
+                        <div class="experience-company">Mt. Lucas Management <span class="experience-location">| Philadelphia, PA</span></div>
+                    </div>
+                    <span class="experience-date">Jun 2019 – Oct 2020</span>
+                </div>
+                <ul class="experience-bullets">
+                    <li>Supported the trading desk through comprehensive operational and analytical responsibilities, including trade booking, reconciliation, and daily profit and loss reporting across futures, options, swaps, and other derivative instruments</li>
+                    <li>Calculated fund NAVs and managed complex trade flows involving exotic options, CDX products, interest rate swaps, and multi-asset futures, ensuring accuracy and consistency across internal and client-facing reporting</li>
+                    <li>Developed historical implied volatility model charts for 15 commodity, currency, and index futures markets, providing quantitative tools to support derivatives analysis and market monitoring activities</li>
+                    <li>Communicated daily P&L and performance metrics to clients and internal stakeholders, translating technical trading data into clear, decision-relevant insights that informed trading strategy</li>
+                    <li>Earned Series 3 licensure for Commodities, Futures, and Options, significantly strengthening regulatory knowledge and professional capability across commodities, futures, and options markets</li>
+                </ul>
             </div>
         </div>
     </section>
@@ -848,95 +1103,111 @@
     <!-- Projects Section -->
     <section id="projects">
         <div class="section-header">
-            <span class="num">03.</span>
+            <span class="num">04.</span>
             <h2>Featured Projects</h2>
         </div>
-
-        <!-- Featured Project -->
-        <div class="featured-project">
-            <div class="featured-image">
-                <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent);"><line x1="12" y1="20" x2="12" y2="10"></line><line x1="18" y1="20" x2="18" y2="4"></line><line x1="6" y1="20" x2="6" y2="16"></line></svg>
-            </div>
-            <div class="featured-content">
-                <p class="featured-label">Featured Project</p>
-                <h3>Optimal Portfolio Tool</h3>
-                <div class="featured-description">
-                    An interactive tool that constructs optimal investment portfolios based on user-defined
-                    risk tolerance and desired return profiles. Implements Modern Portfolio Theory to find
-                    the efficient frontier and recommend asset allocations.
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-header">
+                    <span class="project-icon">🧠</span>
+                    <div class="project-links">
+                        <a href="https://github.com/Joshbazz" target="_blank" aria-label="GitHub">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                        </a>
+                    </div>
                 </div>
+                <h3>LSTM Algorithmic Trading Model</h3>
+                <p>
+                    Designed an LSTM-based deep learning model for t+1 Bitcoin price prediction using Fear and Greed Index data,
+                    incorporating hyperparameter optimization, visualization, and performance analysis with advanced ML frameworks.
+                </p>
                 <div class="project-tech">
                     <span>Python</span>
-                    <span>Pandas</span>
-                    <span>NumPy</span>
-                    <span>Plotly</span>
-                    <span>Streamlit</span>
+                    <span>TensorFlow</span>
+                    <span>Keras</span>
+                    <span>Optuna</span>
+                    <span>scikit-learn</span>
+                    <span>Deep Learning</span>
                 </div>
             </div>
-        </div>
 
-        <!-- Other Projects Grid -->
-        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-header">
+                    <span class="project-icon">📈</span>
+                    <div class="project-links">
+                        <a href="https://github.com/Joshbazz" target="_blank" aria-label="GitHub">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                        </a>
+                    </div>
+                </div>
+                <h3>Deep Learning Trading System</h3>
+                <p>
+                    Built a neural network trading system covering data preprocessing, model training, backtesting,
+                    and performance evaluation, demonstrating applied quantitative research capabilities in algorithmic trading.
+                </p>
+                <div class="project-tech">
+                    <span>Python</span>
+                    <span>TensorFlow</span>
+                    <span>Keras</span>
+                    <span>Pandas</span>
+                    <span>NumPy</span>
+                    <span>Backtesting</span>
+                </div>
+            </div>
+
             <div class="project-card">
                 <div class="project-header">
                     <span class="project-icon">📊</span>
                     <div class="project-links">
                         <a href="https://github.com/Joshbazz" target="_blank" aria-label="GitHub">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
                         </a>
                     </div>
                 </div>
-                <h3>Lookahead Bias Study</h3>
+                <h3>NFL Ticket Market Analysis</h3>
                 <p>
-                    Research article on "Predicting the Future Without Cheating: Overcoming Lookahead Bias
-                    with the Window Method" - exploring best practices in backtesting trading strategies.
+                    Comprehensive 120-page quantitative research report analyzing multi-season NFL ticket market behavior
+                    with probabilistic price modeling, historical trend analysis, and 1K+ data visualizations.
                 </p>
                 <div class="project-tech">
                     <span>Python</span>
-                    <span>Backtesting</span>
+                    <span>Statistical Modeling</span>
+                    <span>Data Visualization</span>
                     <span>Research</span>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <div class="project-card">
-                <div class="project-header">
-                    <span class="project-icon">🤖</span>
-                    <div class="project-links">
-                        <a href="https://github.com/Joshbazz" target="_blank" aria-label="GitHub">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                        </a>
-                    </div>
-                </div>
-                <h3>Algorithmic Trading Bot</h3>
-                <p>
-                    Automated trading system implementing various quantitative strategies with risk management,
-                    position sizing, and real-time market data integration.
-                </p>
-                <div class="project-tech">
-                    <span>Python</span>
-                    <span>APIs</span>
-                    <span>ML</span>
+    <!-- Education Section -->
+    <section id="education">
+        <div class="section-header">
+            <span class="num">05.</span>
+            <h2>Education</h2>
+        </div>
+        <div class="education-grid">
+            <div class="education-card">
+                <div class="education-degree">Pre-Master of Financial Engineering (MFE) Seminars</div>
+                <div class="education-school">Baruch College</div>
+                <div class="education-location">New York, NY</div>
+                <div class="education-details">
+                    Advanced coursework in quantitative finance, financial engineering, and mathematical modeling for derivatives pricing and risk management.
                 </div>
             </div>
-
-            <div class="project-card">
-                <div class="project-header">
-                    <span class="project-icon">🔗</span>
-                    <div class="project-links">
-                        <a href="https://github.com/Joshbazz" target="_blank" aria-label="GitHub">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                        </a>
-                    </div>
+            <div class="education-card">
+                <div class="education-degree">FinTech Boot Camp Certificate</div>
+                <div class="education-school">University of Miami</div>
+                <div class="education-location">Miami, FL</div>
+                <div class="education-details">
+                    Intensive program covering Python, SQL, big data, Ethereum, blockchain, machine learning, neural networks, and algorithmic trading strategies.
                 </div>
-                <h3>Blockchain Analytics</h3>
-                <p>
-                    Data analysis tools for blockchain networks, tracking on-chain metrics, wallet behaviors,
-                    and DeFi protocol analytics.
-                </p>
-                <div class="project-tech">
-                    <span>Web3.py</span>
-                    <span>SQL</span>
-                    <span>APIs</span>
+            </div>
+            <div class="education-card">
+                <div class="education-degree">Bachelor of Science (BS) in Finance</div>
+                <div class="education-school">Pennsylvania State University</div>
+                <div class="education-location">State College, PA</div>
+                <div class="education-details">
+                    Comprehensive finance education with focus on financial analysis, portfolio theory, corporate finance, and investment strategies.
                 </div>
             </div>
         </div>
@@ -944,39 +1215,46 @@
 
     <!-- Contact Section -->
     <section id="contact" class="contact">
-        <p class="section-subtitle">04. What's Next?</p>
-        <h2>Get In Touch</h2>
+        <p class="section-subtitle">06. What's Next?</p>
+        <h2>Let's Connect</h2>
         <p>
-            I'm currently looking for full-time opportunities and am open to collaboration on interesting
-            projects. Whether you have a question, a proposal, or just want to connect, my inbox is always open.
+            I'm actively exploring new opportunities in quantitative research, algorithmic trading, and data science.
+            Whether you have a role that matches my background or want to discuss potential collaboration, I'd love to hear from you.
         </p>
-        <div class="contact-info">
-            <div class="contact-item">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent);"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                <span>Miami, FL</span>
-            </div>
-            <div class="contact-item">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent);"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                <span>josh@joshbazzano.com</span>
-            </div>
+        <div class="contact-grid">
+            <a href="mailto:joshbazz36@gmail.com" class="contact-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                <span>joshbazz36@gmail.com</span>
+            </a>
+            <a href="tel:+15402190372" class="contact-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                <span>(540) 219-0372</span>
+            </a>
+            <a href="#" class="contact-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                <span>New York, NY</span>
+            </a>
         </div>
-        <a href="mailto:josh@joshbazzano.com" class="btn btn-primary">Say Hello</a>
+        <a href="mailto:joshbazz36@gmail.com" class="btn btn-primary">Say Hello</a>
         <div class="social-links">
             <a href="https://github.com/Joshbazz" target="_blank" aria-label="GitHub">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
             </a>
             <a href="https://linkedin.com/in/joshbazzano" target="_blank" aria-label="LinkedIn">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
             </a>
-            <a href="https://twitter.com/joshbazzano" target="_blank" aria-label="Twitter">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+            <a href="https://substack.com/@joshbazzano" target="_blank" aria-label="Substack">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v2H4zM4 8h16v2H4zM4 12h16l-8 10-8-10z"></path></svg>
+            </a>
+            <a href="https://joshbazzano.com" target="_blank" aria-label="Portfolio">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
             </a>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p>Designed & Built by <a href="https://joshbazzano.com">Josh Bazzano</a></p>
+        <p>Designed & Built by <a href="https://joshbazzano.com">Josh Bazzano</a> | Quantitative Analyst & Researcher</p>
     </footer>
 </body>
 </html>
