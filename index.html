@@ -1,10 +1,982 @@
 <!DOCTYPE html>
-<html>
-    <body>
-        <h1>hello world</h1>
-        <h2>hello mars</h2>
-        <h3>goodbye Mars</h3>
-        <h4>Jupiter was visiting pluto</h4>
-        <h5>Oh my goodness</h5>
-    </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Josh Bazzano | Quantitative Finance</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0a192f;
+            --secondary: #112240;
+            --accent: #64ffda;
+            --accent-hover: #4cd9b4;
+            --text-primary: #ccd6f6;
+            --text-secondary: #8892b0;
+            --white: #e6f1ff;
+            --gradient-start: #0a192f;
+            --gradient-end: #112240;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10, 25, 47, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(100, 255, 218, 0.1);
+        }
+
+        .logo {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-decoration: none;
+            letter-spacing: -1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a:hover::before {
+            width: 100%;
+        }
+
+        .nav-links .num {
+            color: var(--accent);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            margin-right: 0.3rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 10%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero-intro {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--accent);
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease 0.1s forwards;
+        }
+
+        .hero h2 {
+            font-size: clamp(1.8rem, 4vw, 3.5rem);
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease 0.2s forwards;
+        }
+
+        .hero p {
+            max-width: 540px;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease 0.3s forwards;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1.5rem;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease 0.4s forwards;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .btn-primary {
+            background: transparent;
+            color: var(--accent);
+            border: 1px solid var(--accent);
+        }
+
+        .btn-primary:hover {
+            background: rgba(100, 255, 218, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: var(--accent);
+            color: var(--primary);
+            border: 1px solid var(--accent);
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 10%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--white);
+        }
+
+        .section-header .num {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--accent);
+            font-size: 1.2rem;
+            margin-right: 0.75rem;
+        }
+
+        .section-header::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: rgba(136, 146, 176, 0.3);
+            margin-left: 1.5rem;
+            max-width: 300px;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 3fr 2fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .about-text p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        .about-text a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .about-text a:hover {
+            text-decoration: underline;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+        }
+
+        .skill-item {
+            display: flex;
+            align-items: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .skill-item::before {
+            content: '▹';
+            color: var(--accent);
+            margin-right: 0.75rem;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 300px;
+            border-radius: 4px;
+            background: var(--accent);
+        }
+
+        .about-image-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            width: 100%;
+            height: 100%;
+            border: 2px solid var(--accent);
+            border-radius: 4px;
+            z-index: -1;
+            transition: all 0.3s ease;
+        }
+
+        .about-image-wrapper:hover::before {
+            top: 10px;
+            left: 10px;
+        }
+
+        .profile-placeholder {
+            width: 100%;
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--accent);
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+        }
+
+        /* Experience Section */
+        .experience-grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .experience-card {
+            background: rgba(17, 34, 64, 0.5);
+            border: 1px solid rgba(100, 255, 218, 0.1);
+            border-radius: 4px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .experience-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .experience-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--white);
+        }
+
+        .experience-role {
+            color: var(--accent);
+            font-size: 0.95rem;
+            margin-top: 0.25rem;
+        }
+
+        .experience-date {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .experience-description {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background: rgba(17, 34, 64, 0.7);
+            border-radius: 4px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .project-card:hover {
+            transform: translateY(-7px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 30px -15px rgba(2, 12, 27, 0.7);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-icon {
+            font-size: 2.5rem;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-links a {
+            color: var(--text-secondary);
+            font-size: 1.25rem;
+            transition: color 0.3s ease;
+        }
+
+        .project-links a:hover {
+            color: var(--accent);
+        }
+
+        .project-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 0.75rem;
+            transition: color 0.3s ease;
+        }
+
+        .project-card:hover h3 {
+            color: var(--accent);
+        }
+
+        .project-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            flex-grow: 1;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .project-tech span {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        /* Featured Project */
+        .featured-project {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 4rem;
+            align-items: center;
+        }
+
+        .featured-image {
+            background: linear-gradient(135deg, rgba(100, 255, 218, 0.1) 0%, rgba(17, 34, 64, 0.8) 100%);
+            border-radius: 4px;
+            aspect-ratio: 16/10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            border: 1px solid rgba(100, 255, 218, 0.2);
+        }
+
+        .featured-content {
+            padding: 1rem;
+        }
+
+        .featured-label {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--accent);
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .featured-content h3 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+        }
+
+        .featured-description {
+            background: var(--secondary);
+            padding: 1.5rem;
+            border-radius: 4px;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
+        }
+
+        /* Contact Section */
+        .contact {
+            text-align: center;
+            padding: 8rem 10%;
+        }
+
+        .contact h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .contact .section-subtitle {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--accent);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact p {
+            color: var(--text-secondary);
+            max-width: 500px;
+            margin: 0 auto 2.5rem;
+            font-size: 1.05rem;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .contact-item span {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+        }
+
+        /* Social Links */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .social-links a {
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-secondary);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                display: flex;
+                justify-content: center;
+            }
+
+            .featured-project {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero {
+                padding: 0 5%;
+            }
+
+            section {
+                padding: 4rem 5%;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+            }
+
+            .btn {
+                text-align: center;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+        }
+
+        /* Side Elements */
+        .side-element {
+            position: fixed;
+            bottom: 0;
+            width: 40px;
+            z-index: 10;
+        }
+
+        .side-element.left {
+            left: 40px;
+        }
+
+        .side-element.right {
+            right: 40px;
+        }
+
+        .side-element::after {
+            content: '';
+            display: block;
+            width: 1px;
+            height: 90px;
+            margin: 0 auto;
+            background: var(--text-secondary);
+        }
+
+        .side-social {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+            padding-bottom: 1.5rem;
+        }
+
+        .side-social a {
+            color: var(--text-secondary);
+            font-size: 1.25rem;
+            transition: all 0.3s ease;
+        }
+
+        .side-social a:hover {
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .side-email {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .side-email a {
+            writing-mode: vertical-rl;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            padding-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .side-email a:hover {
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 1080px) {
+            .side-element {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="#" class="logo">JB</a>
+        <ul class="nav-links">
+            <li><a href="#about"><span class="num">01.</span>About</a></li>
+            <li><a href="#experience"><span class="num">02.</span>Experience</a></li>
+            <li><a href="#projects"><span class="num">03.</span>Projects</a></li>
+            <li><a href="#contact"><span class="num">04.</span>Contact</a></li>
+            <li><a href="https://github.com/Joshbazz" class="btn btn-primary" target="_blank">Resume</a></li>
+        </ul>
+    </nav>
+
+    <!-- Side Elements -->
+    <div class="side-element left">
+        <div class="side-social">
+            <a href="https://github.com/Joshbazz" target="_blank" aria-label="GitHub">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+            </a>
+            <a href="https://linkedin.com/in/joshbazzano" target="_blank" aria-label="LinkedIn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </a>
+            <a href="https://twitter.com/joshbazzano" target="_blank" aria-label="Twitter">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+            </a>
+        </div>
+    </div>
+
+    <div class="side-element right">
+        <div class="side-email">
+            <a href="mailto:josh@joshbazzano.com">josh@joshbazzano.com</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <p class="hero-intro">Hi, my name is</p>
+        <h1>Josh Bazzano.</h1>
+        <h2>I build things for quantitative finance.</h2>
+        <p>
+            I'm a FinTech specialist focused on algorithmic trading, data science, and quantitative analysis.
+            Currently completing the University of Miami FinTech Bootcamp while building tools that bridge
+            the gap between financial theory and practical implementation.
+        </p>
+        <div class="hero-cta">
+            <a href="#projects" class="btn btn-primary">View My Work</a>
+            <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="section-header">
+            <span class="num">01.</span>
+            <h2>About Me</h2>
+        </div>
+        <div class="about-content">
+            <div class="about-text">
+                <p>
+                    Hello! I'm Josh, a quantitative finance enthusiast based in <strong>Miami, FL</strong> with a deep passion
+                    for technology, cryptocurrency, and finance. My journey has taken me through diverse roles as an
+                    <strong>Analyst</strong>, <strong>Trader</strong>, and <strong>Developer</strong>, giving me a unique perspective
+                    on the intersection of markets and technology.
+                </p>
+                <p>
+                    Currently, I'm completing the <a href="https://bootcamp.miami.edu/fintech/" target="_blank">University of Miami FinTech Bootcamp</a>,
+                    where I'm deepening my expertise in Python, machine learning, and blockchain technologies.
+                    I specialize in technical writing and research, with SME experience in creating clear,
+                    actionable documentation.
+                </p>
+                <p>
+                    I'm actively seeking <strong>full-time opportunities</strong> and am open to collaboration on
+                    interesting projects and consulting engagements.
+                </p>
+                <p>Here are some technologies I've been working with:</p>
+                <div class="skills-grid">
+                    <span class="skill-item">Python</span>
+                    <span class="skill-item">Pandas & NumPy</span>
+                    <span class="skill-item">Machine Learning</span>
+                    <span class="skill-item">Algorithmic Trading</span>
+                    <span class="skill-item">SQL & Databases</span>
+                    <span class="skill-item">Blockchain/Web3</span>
+                    <span class="skill-item">Data Visualization</span>
+                    <span class="skill-item">Technical Writing</span>
+                </div>
+            </div>
+            <div class="about-image">
+                <div class="about-image-wrapper">
+                    <div class="profile-placeholder">JB</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="section-header">
+            <span class="num">02.</span>
+            <h2>Experience & Education</h2>
+        </div>
+        <div class="experience-grid">
+            <div class="experience-card">
+                <div class="experience-header">
+                    <div>
+                        <div class="experience-title">University of Miami</div>
+                        <div class="experience-role">FinTech Bootcamp</div>
+                    </div>
+                    <div class="experience-date">Current</div>
+                </div>
+                <p class="experience-description">
+                    Intensive program covering Python, machine learning, blockchain, algorithmic trading,
+                    and financial analysis. Building practical projects that solve real-world financial challenges.
+                </p>
+            </div>
+            <div class="experience-card">
+                <div class="experience-header">
+                    <div>
+                        <div class="experience-title">Research & Technical Writing</div>
+                        <div class="experience-role">Subject Matter Expert</div>
+                    </div>
+                    <div class="experience-date">Ongoing</div>
+                </div>
+                <p class="experience-description">
+                    Creating comprehensive technical documentation and research pieces focused on algorithmic
+                    trading strategies, data science methodologies, and fintech innovations.
+                </p>
+            </div>
+            <div class="experience-card">
+                <div class="experience-header">
+                    <div>
+                        <div class="experience-title">Trading & Analysis</div>
+                        <div class="experience-role">Analyst & Trader</div>
+                    </div>
+                    <div class="experience-date">Previous</div>
+                </div>
+                <p class="experience-description">
+                    Developed trading strategies, conducted market analysis, and built quantitative models
+                    for portfolio optimization across traditional and cryptocurrency markets.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="section-header">
+            <span class="num">03.</span>
+            <h2>Featured Projects</h2>
+        </div>
+
+        <!-- Featured Project -->
+        <div class="featured-project">
+            <div class="featured-image">
+                <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent);"><line x1="12" y1="20" x2="12" y2="10"></line><line x1="18" y1="20" x2="18" y2="4"></line><line x1="6" y1="20" x2="6" y2="16"></line></svg>
+            </div>
+            <div class="featured-content">
+                <p class="featured-label">Featured Project</p>
+                <h3>Optimal Portfolio Tool</h3>
+                <div class="featured-description">
+                    An interactive tool that constructs optimal investment portfolios based on user-defined
+                    risk tolerance and desired return profiles. Implements Modern Portfolio Theory to find
+                    the efficient frontier and recommend asset allocations.
+                </div>
+                <div class="project-tech">
+                    <span>Python</span>
+                    <span>Pandas</span>
+                    <span>NumPy</span>
+                    <span>Plotly</span>
+                    <span>Streamlit</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Other Projects Grid -->
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-header">
+                    <span class="project-icon">📊</span>
+                    <div class="project-links">
+                        <a href="https://github.com/Joshbazz" target="_blank" aria-label="GitHub">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                        </a>
+                    </div>
+                </div>
+                <h3>Lookahead Bias Study</h3>
+                <p>
+                    Research article on "Predicting the Future Without Cheating: Overcoming Lookahead Bias
+                    with the Window Method" - exploring best practices in backtesting trading strategies.
+                </p>
+                <div class="project-tech">
+                    <span>Python</span>
+                    <span>Backtesting</span>
+                    <span>Research</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <span class="project-icon">🤖</span>
+                    <div class="project-links">
+                        <a href="https://github.com/Joshbazz" target="_blank" aria-label="GitHub">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                        </a>
+                    </div>
+                </div>
+                <h3>Algorithmic Trading Bot</h3>
+                <p>
+                    Automated trading system implementing various quantitative strategies with risk management,
+                    position sizing, and real-time market data integration.
+                </p>
+                <div class="project-tech">
+                    <span>Python</span>
+                    <span>APIs</span>
+                    <span>ML</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <span class="project-icon">🔗</span>
+                    <div class="project-links">
+                        <a href="https://github.com/Joshbazz" target="_blank" aria-label="GitHub">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                        </a>
+                    </div>
+                </div>
+                <h3>Blockchain Analytics</h3>
+                <p>
+                    Data analysis tools for blockchain networks, tracking on-chain metrics, wallet behaviors,
+                    and DeFi protocol analytics.
+                </p>
+                <div class="project-tech">
+                    <span>Web3.py</span>
+                    <span>SQL</span>
+                    <span>APIs</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <p class="section-subtitle">04. What's Next?</p>
+        <h2>Get In Touch</h2>
+        <p>
+            I'm currently looking for full-time opportunities and am open to collaboration on interesting
+            projects. Whether you have a question, a proposal, or just want to connect, my inbox is always open.
+        </p>
+        <div class="contact-info">
+            <div class="contact-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent);"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                <span>Miami, FL</span>
+            </div>
+            <div class="contact-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent);"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                <span>josh@joshbazzano.com</span>
+            </div>
+        </div>
+        <a href="mailto:josh@joshbazzano.com" class="btn btn-primary">Say Hello</a>
+        <div class="social-links">
+            <a href="https://github.com/Joshbazz" target="_blank" aria-label="GitHub">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+            </a>
+            <a href="https://linkedin.com/in/joshbazzano" target="_blank" aria-label="LinkedIn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </a>
+            <a href="https://twitter.com/joshbazzano" target="_blank" aria-label="Twitter">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>Designed & Built by <a href="https://joshbazzano.com">Josh Bazzano</a></p>
+    </footer>
+</body>
 </html>
