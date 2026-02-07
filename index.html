@@ -172,7 +172,25 @@
 
             <div class="about-visual">
                 <div class="profile-card glass-card">
+                    <!-- ============================================
+                         PROFILE PICTURE
+                         ============================================
+                         To add your profile picture:
+                         1. Add image to: media/profile/PROFILE_PICTURE.png
+                         2. Uncomment the <img> tag below
+                         3. Comment out or delete the placeholder div
+
+                         Recommended size: 400x400px (square)
+                    ============================================ -->
+
+                    <!-- UNCOMMENT THIS WHEN YOU ADD YOUR PROFILE PICTURE:
+                    <img src="media/profile/PROFILE_PICTURE.png" alt="Josh Bazzano" class="profile-image">
+                    -->
+
+                    <!-- PLACEHOLDER - DELETE THIS WHEN YOU ADD YOUR PICTURE -->
                     <div class="profile-avatar">JB</div>
+                    <!-- END PLACEHOLDER -->
+
                     <div class="profile-info">
                         <h3>Josh Bazzano</h3>
                         <p>Quantitative Analyst</p>
@@ -353,16 +371,81 @@
         </div>
 
         <div class="projects-grid">
+            <!-- ============================================
+                 POLYMARKET TRADE COLLECTOR - FEATURED PROJECT
+                 ============================================
+                 Image: media/projects/polymarket.png
+                 Recommended size: 800x500px
+
+                 Links to update:
+                 - GitHub: UPDATE_GITHUB_LINK_HERE
+                 - Substack: UPDATE_SUBSTACK_LINK_HERE
+            ============================================ -->
+            <article class="project-card glass-card featured-project">
+                <div class="project-image">
+                    <!-- UNCOMMENT WHEN YOU ADD PROJECT IMAGE:
+                    <img src="media/projects/polymarket.png" alt="Polymarket Trade Collector">
+                    -->
+                    <!-- PLACEHOLDER - DELETE WHEN YOU ADD IMAGE -->
+                    <div class="project-icon-large">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                    </div>
+                    <!-- END PLACEHOLDER -->
+                    <div class="featured-badge">Active Development</div>
+                </div>
+                <div class="project-content">
+                    <div class="project-header">
+                        <h3>Polymarket Trade Collector</h3>
+                        <div class="project-links">
+                            <!-- ============================================
+                                 UPDATE THESE LINKS:
+                                 - GitHub repository URL
+                                 - Substack article URL
+                            ============================================ -->
+                            <a href="#" target="_blank" aria-label="GitHub" title="View on GitHub">
+                                <!-- TODO: Replace # with your GitHub repo URL -->
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                            </a>
+                            <a href="#" target="_blank" aria-label="Substack" title="Read on Substack">
+                                <!-- TODO: Replace # with your Substack article URL -->
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v2H4zM4 8h16v2H4zM4 12h16l-8 10-8-10z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                    <p>Cloud-based real-time data pipeline capturing prediction market microstructure from Polymarket via WebSocket. Collects full order book depth and trade streams (650K+ rows, 13K+ trades) with automated cloud-to-local replication and daily archival. Early analysis reveals potential alpha signals in tail-size trades and asymmetric Yes/No position dynamics.</p>
+                    <div class="project-tags">
+                        <span>Python</span>
+                        <span>WebSocket</span>
+                        <span>SQLite</span>
+                        <span>Cloud Infrastructure</span>
+                        <span>Market Microstructure</span>
+                        <span>Data Pipeline</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- ============================================
+                 LSTM TRADING MODEL
+                 ============================================
+                 Image: media/projects/lstm-trading.png
+                 GitHub: UPDATE_GITHUB_LINK_HERE
+            ============================================ -->
             <article class="project-card glass-card">
                 <div class="project-image">
+                    <!-- UNCOMMENT WHEN YOU ADD PROJECT IMAGE:
+                    <img src="media/projects/lstm-trading.png" alt="LSTM Trading Model">
+                    -->
+                    <!-- PLACEHOLDER -->
                     <div class="project-icon-large">
                         <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
                     </div>
+                    <!-- END PLACEHOLDER -->
                 </div>
                 <div class="project-content">
                     <div class="project-header">
                         <h3>LSTM Trading Model</h3>
                         <div class="project-links">
+                            <!-- TODO: Replace # with your GitHub repo URL -->
                             <a href="https://github.com/Joshbazz" target="_blank" aria-label="GitHub">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
                             </a>
@@ -375,16 +458,28 @@
                 </div>
             </article>
 
+            <!-- ============================================
+                 NEURAL NETWORK TRADING SYSTEM
+                 ============================================
+                 Image: media/projects/neural-network.png
+                 GitHub: UPDATE_GITHUB_LINK_HERE
+            ============================================ -->
             <article class="project-card glass-card">
                 <div class="project-image">
+                    <!-- UNCOMMENT WHEN YOU ADD PROJECT IMAGE:
+                    <img src="media/projects/neural-network.png" alt="Neural Network Trading System">
+                    -->
+                    <!-- PLACEHOLDER -->
                     <div class="project-icon-large">
                         <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
                     </div>
+                    <!-- END PLACEHOLDER -->
                 </div>
                 <div class="project-content">
                     <div class="project-header">
                         <h3>Neural Network Trading System</h3>
                         <div class="project-links">
+                            <!-- TODO: Replace # with your GitHub repo URL -->
                             <a href="https://github.com/Joshbazz" target="_blank" aria-label="GitHub">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
                             </a>
@@ -397,16 +492,28 @@
                 </div>
             </article>
 
+            <!-- ============================================
+                 NFL MARKET ANALYSIS
+                 ============================================
+                 Image: media/projects/nfl-analysis.png
+                 GitHub: UPDATE_GITHUB_LINK_HERE
+            ============================================ -->
             <article class="project-card glass-card">
                 <div class="project-image">
+                    <!-- UNCOMMENT WHEN YOU ADD PROJECT IMAGE:
+                    <img src="media/projects/nfl-analysis.png" alt="NFL Market Analysis">
+                    -->
+                    <!-- PLACEHOLDER -->
                     <div class="project-icon-large">
                         <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg>
                     </div>
+                    <!-- END PLACEHOLDER -->
                 </div>
                 <div class="project-content">
                     <div class="project-header">
                         <h3>NFL Market Analysis</h3>
                         <div class="project-links">
+                            <!-- TODO: Replace # with your GitHub repo URL -->
                             <a href="https://github.com/Joshbazz" target="_blank" aria-label="GitHub">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
                             </a>
@@ -517,6 +624,9 @@
             </div>
 
             <div class="social-links">
+                <!-- ============================================
+                     SOCIAL LINKS - Update URLs as needed
+                ============================================ -->
                 <a href="https://github.com/Joshbazz" target="_blank" class="social-link" aria-label="GitHub">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
                 </a>

@@ -880,6 +880,91 @@ body {
     margin-top: 3rem;
 }
 
+/* ===== Featured Project Styles ===== */
+.featured-project {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+}
+
+.featured-project .project-image {
+    height: 100%;
+    min-height: 280px;
+    position: relative;
+}
+
+.featured-project .project-content {
+    padding: 2rem;
+}
+
+.featured-project .project-header h3 {
+    font-size: 1.35rem;
+}
+
+.featured-project p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+.featured-badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: var(--accent-gradient);
+    color: white;
+    padding: 0.4rem 0.85rem;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    z-index: 10;
+}
+
+.project-links {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.project-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    background: rgba(99, 102, 241, 0.1);
+    color: var(--text-secondary);
+    transition: all var(--transition-fast);
+}
+
+.project-links a:hover {
+    background: rgba(99, 102, 241, 0.2);
+    color: var(--accent-primary);
+    transform: translateY(-2px);
+}
+
+/* ===== Profile Image ===== */
+.profile-image {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 1.5rem;
+    border-radius: 20px;
+    object-fit: cover;
+    border: 3px solid rgba(99, 102, 241, 0.3);
+}
+
+@media (max-width: 968px) {
+    .featured-project {
+        grid-template-columns: 1fr;
+    }
+
+    .featured-project .project-image {
+        min-height: 200px;
+    }
+}
+
 /* ===== Education Section ===== */
 .education-grid {
     display: grid;
