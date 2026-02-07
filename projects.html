@@ -268,7 +268,75 @@
     </div>
 
     <div class="projects-page-grid">
-        <!-- LSTM Trading Model -->
+        <!-- ============================================
+             POLYMARKET TRADE COLLECTOR - FEATURED PROJECT
+             ============================================
+             Image: media/projects/polymarket.png
+             Recommended size: 800x500px
+
+             Links to update:
+             - GitHub: UPDATE_GITHUB_LINK_HERE
+             - Substack: UPDATE_SUBSTACK_LINK_HERE
+        ============================================ -->
+        <article class="project-card-large" data-category="data trading" style="grid-column: 1 / -1;">
+            <div class="project-image" style="position: relative;">
+                <!-- UNCOMMENT WHEN YOU ADD PROJECT IMAGE:
+                <img src="media/projects/polymarket.png" alt="Polymarket Trade Collector" style="width: 100%; height: 100%; object-fit: cover;">
+                -->
+                <!-- PLACEHOLDER - DELETE WHEN YOU ADD IMAGE -->
+                <div class="project-icon-large">
+                    <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                </div>
+                <!-- END PLACEHOLDER -->
+                <span style="position: absolute; top: 1rem; left: 1rem; background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%); color: white; padding: 0.4rem 0.85rem; border-radius: 6px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">Active Development</span>
+            </div>
+            <div class="project-content">
+                <div class="project-meta">
+                    <span class="project-status in-progress">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="6"/></svg>
+                        In Progress
+                    </span>
+                    <span class="project-category">Data Pipeline / Market Microstructure</span>
+                </div>
+                <h3>Polymarket Trade Collector</h3>
+                <p>Cloud-based real-time data pipeline capturing prediction market microstructure from Polymarket via WebSocket. The system collects full order book depth and trade streams, currently amassing 650K+ rows and 13K+ trades with automated cloud-to-local replication and daily archival. Built to study market microstructure dynamics in prediction markets, with early analysis revealing potential alpha signals in tail-size trades and asymmetric Yes/No position dynamics.</p>
+                <p style="margin-top: 0.75rem; font-size: 0.9rem;">Key features include real-time WebSocket connection to Polymarket API, SQLite storage with automated syncing, structured data capture of bids/asks/trades, and cloud infrastructure for 24/7 collection with local backup. Future work includes statistical analysis of order flow patterns, visualization dashboards, and potential strategy development.</p>
+                <div class="project-tags">
+                    <span>Python</span>
+                    <span>WebSocket</span>
+                    <span>SQLite</span>
+                    <span>Cloud Infrastructure</span>
+                    <span>Market Microstructure</span>
+                    <span>Data Pipeline</span>
+                    <span>Real-time Data</span>
+                    <span>Prediction Markets</span>
+                </div>
+                <div class="project-actions">
+                    <!-- ============================================
+                         UPDATE THESE LINKS:
+                         - GitHub: Your repository URL
+                         - Substack: Your article URL
+                    ============================================ -->
+                    <a href="#" target="_blank" class="btn btn-outline">
+                        <!-- TODO: Replace # with your GitHub repo URL -->
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                        View Code
+                    </a>
+                    <a href="#" target="_blank" class="btn btn-outline">
+                        <!-- TODO: Replace # with your Substack article URL -->
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v2H4zM4 8h16v2H4zM4 12h16l-8 10-8-10z"/></svg>
+                        Read Article
+                    </a>
+                </div>
+            </div>
+        </article>
+
+        <!-- ============================================
+             LSTM TRADING MODEL
+             ============================================
+             Image: media/projects/lstm-trading.png
+             GitHub: UPDATE_GITHUB_LINK_HERE
+        ============================================ -->
         <article class="project-card-large" data-category="ml trading">
             <div class="project-image">
                 <div class="project-icon-large">
