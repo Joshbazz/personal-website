@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Josh Bazzano</title>
+    <meta name="description" content="Portfolio of quantitative research, algorithmic trading, and machine learning projects by Josh Bazzano.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Projects Page Specific Styles */
+        .projects-hero {
+            padding: 10rem 8% 4rem;
+            text-align: center;
+        }
+
+        .projects-hero h1 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .projects-hero p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .filter-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .filter-tab {
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .filter-tab:hover,
+        .filter-tab.active {
+            background: rgba(99, 102, 241, 0.1);
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+        }
+
+        .projects-page-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            padding: 2rem 8% 6rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .project-card-large {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all var(--transition-normal);
+        }
+
+        .project-card-large:hover {
+            border-color: rgba(99, 102, 241, 0.3);
+            box-shadow: 0 8px 32px var(--shadow-color);
+            transform: translateY(-5px);
+        }
+
+        .project-card-large .project-image {
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card-large .project-image::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--accent-gradient);
+            opacity: 0;
+            transition: opacity var(--transition-normal);
+        }
+
+        .project-card-large:hover .project-image::before {
+            opacity: 0.1;
+        }
+
+        .project-card-large .project-content {
+            padding: 1.75rem;
+        }
+
+        .project-card-large h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+        }
+
+        .project-card-large p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1.25rem;
+        }
+
+        .project-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.75rem;
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+        }
+
+        .project-status.completed {
+            background: rgba(34, 197, 94, 0.1);
+            color: #22c55e;
+        }
+
+        .project-status.in-progress {
+            background: rgba(251, 191, 36, 0.1);
+            color: #fbbf24;
+        }
+
+        .project-category {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .project-card-large .project-tags {
+            margin-bottom: 1.25rem;
+        }
+
+        .project-card-large .project-tags span {
+            font-size: 0.75rem;
+            padding: 0.3rem 0.6rem;
+        }
+
+        .project-actions {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .project-actions .btn {
+            flex: 1;
+            justify-content: center;
+            padding: 0.6rem 1rem;
+            font-size: 0.85rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            transition: color var(--transition-fast);
+        }
+
+        .back-link:hover {
+            color: var(--accent-primary);
+        }
+
+        .projects-section-title {
+            padding: 0 8%;
+            max-width: 1400px;
+            margin: 3rem auto 0;
+        }
+
+        .projects-section-title h2 {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .projects-section-title h2::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border-color);
+        }
+
+        @media (max-width: 768px) {
+            .projects-hero {
+                padding: 8rem 5% 3rem;
+            }
+
+            .projects-page-grid {
+                padding: 2rem 5% 4rem;
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-gradient"></div>
+    <div class="bg-grid"></div>
+
+    <!-- Navigation -->
+    <nav class="glass-nav">
+        <a href="index.html" class="logo">
+            <span class="logo-bracket">[</span>JB<span class="logo-bracket">]</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html#about" class="nav-link">About</a></li>
+            <li><a href="index.html#experience" class="nav-link">Experience</a></li>
+            <li><a href="projects.html" class="nav-link">Projects</a></li>
+            <li><a href="index.html#education" class="nav-link">Education</a></li>
+            <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+        </ul>
+        <button class="mobile-menu-btn" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- Projects Hero -->
+    <section class="projects-hero">
+        <a href="index.html" class="back-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            Back to Home
+        </a>
+        <h1>All Projects</h1>
+        <p>A collection of quantitative research, algorithmic trading systems, machine learning models, and data analysis projects.</p>
+
+        <div class="filter-tabs">
+            <button class="filter-tab active" data-filter="all">All</button>
+            <button class="filter-tab" data-filter="ml">Machine Learning</button>
+            <button class="filter-tab" data-filter="trading">Trading Systems</button>
+            <button class="filter-tab" data-filter="research">Research</button>
+            <button class="filter-tab" data-filter="data">Data Analysis</button>
+        </div>
+    </section>
+
+    <!-- Featured Projects -->
+    <div class="projects-section-title">
+        <h2>Featured Projects</h2>
+    </div>
+
+    <div class="projects-page-grid">
+        <!-- LSTM Trading Model -->
+        <article class="project-card-large" data-category="ml trading">
+            <div class="project-image">
+                <div class="project-icon-large">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                </div>
+            </div>
+            <div class="project-content">
+                <div class="project-meta">
+                    <span class="project-status completed">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="6"/></svg>
+                        Completed
+                    </span>
+                    <span class="project-category">Machine Learning</span>
+                </div>
+                <h3>LSTM Algorithmic Trading Model</h3>
+                <p>Designed an LSTM-based deep learning model for t+1 Bitcoin price prediction using Fear and Greed Index data. Incorporates hyperparameter optimization via Optuna, comprehensive visualization, and robust performance analysis.</p>
+                <div class="project-tags">
+                    <span>Python</span>
+                    <span>TensorFlow</span>
+                    <span>Keras</span>
+                    <span>Optuna</span>
+                    <span>scikit-learn</span>
+                </div>
+                <div class="project-actions">
+                    <a href="https://github.com/Joshbazz" target="_blank" class="btn btn-outline">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                        View Code
+                    </a>
+                </div>
+            </div>
+        </article>
+
+        <!-- Neural Network Trading System -->
+        <article class="project-card-large" data-category="ml trading">
+            <div class="project-image">
+                <div class="project-icon-large">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
+                </div>
+            </div>
+            <div class="project-content">
+                <div class="project-meta">
+                    <span class="project-status completed">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="6"/></svg>
+                        Completed
+                    </span>
+                    <span class="project-category">Deep Learning</span>
+                </div>
+                <h3>Neural Network Trading System</h3>
+                <p>End-to-end neural network trading system covering data preprocessing, model training, backtesting, and performance evaluation. Demonstrates applied quantitative research capabilities in algorithmic trading.</p>
+                <div class="project-tags">
+                    <span>Python</span>
+                    <span>TensorFlow</span>
+                    <span>Keras</span>
+                    <span>Pandas</span>
+                    <span>NumPy</span>
+                    <span>Backtesting</span>
+                </div>
+                <div class="project-actions">
+                    <a href="https://github.com/Joshbazz" target="_blank" class="btn btn-outline">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                        View Code
+                    </a>
+                </div>
+            </div>
+        </article>
+
+        <!-- NFL Market Analysis -->
+        <article class="project-card-large" data-category="research data">
+            <div class="project-image">
+                <div class="project-icon-large">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg>
+                </div>
+            </div>
+            <div class="project-content">
+                <div class="project-meta">
+                    <span class="project-status completed">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="6"/></svg>
+                        Completed
+                    </span>
+                    <span class="project-category">Research</span>
+                </div>
+                <h3>NFL Ticket Market Analysis</h3>
+                <p>Comprehensive 120-page quantitative research report analyzing multi-season NFL ticket market behavior with probabilistic price capitulation modeling, historical trend analysis, and 1K+ generated data visualizations.</p>
+                <div class="project-tags">
+                    <span>Python</span>
+                    <span>Statistical Modeling</span>
+                    <span>Data Visualization</span>
+                    <span>Research</span>
+                </div>
+                <div class="project-actions">
+                    <a href="https://github.com/Joshbazz" target="_blank" class="btn btn-outline">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                        View Report
+                    </a>
+                </div>
+            </div>
+        </article>
+    </div>
+
+    <!-- More Projects -->
+    <div class="projects-section-title">
+        <h2>Other Projects</h2>
+    </div>
+
+    <div class="projects-page-grid">
+        <!-- Volatility Modeling -->
+        <article class="project-card-large" data-category="trading data">
+            <div class="project-image">
+                <div class="project-icon-large">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                </div>
+            </div>
+            <div class="project-content">
+                <div class="project-meta">
+                    <span class="project-status completed">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="6"/></svg>
+                        Completed
+                    </span>
+                    <span class="project-category">Quantitative Finance</span>
+                </div>
+                <h3>Implied Volatility Models</h3>
+                <p>Developed historical implied volatility model charts for 15 commodity, currency, and index futures markets at Mt. Lucas Management. Provided quantitative tools supporting derivatives analysis and market monitoring.</p>
+                <div class="project-tags">
+                    <span>Excel VBA</span>
+                    <span>Volatility</span>
+                    <span>Derivatives</span>
+                    <span>Futures</span>
+                </div>
+                <div class="project-actions">
+                    <a href="https://github.com/Joshbazz" target="_blank" class="btn btn-outline">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                        View Details
+                    </a>
+                </div>
+            </div>
+        </article>
+
+        <!-- Portfolio Optimization Tool -->
+        <article class="project-card-large" data-category="trading data">
+            <div class="project-image">
+                <div class="project-icon-large">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 0 1 0 20"/><path d="M12 2v20"/></svg>
+                </div>
+            </div>
+            <div class="project-content">
+                <div class="project-meta">
+                    <span class="project-status completed">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="6"/></svg>
+                        Completed
+                    </span>
+                    <span class="project-category">Portfolio Management</span>
+                </div>
+                <h3>Portfolio Optimization Tool</h3>
+                <p>Interactive tool that constructs optimal investment portfolios based on user-defined risk tolerance and desired return profiles. Implements Modern Portfolio Theory to find the efficient frontier and recommend asset allocations.</p>
+                <div class="project-tags">
+                    <span>Python</span>
+                    <span>Pandas</span>
+                    <span>NumPy</span>
+                    <span>Plotly</span>
+                    <span>Streamlit</span>
+                </div>
+                <div class="project-actions">
+                    <a href="https://github.com/Joshbazz" target="_blank" class="btn btn-outline">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                        View Code
+                    </a>
+                </div>
+            </div>
+        </article>
+
+        <!-- Lookahead Bias Study -->
+        <article class="project-card-large" data-category="research trading">
+            <div class="project-image">
+                <div class="project-icon-large">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                </div>
+            </div>
+            <div class="project-content">
+                <div class="project-meta">
+                    <span class="project-status completed">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="6"/></svg>
+                        Completed
+                    </span>
+                    <span class="project-category">Research</span>
+                </div>
+                <h3>Lookahead Bias Research</h3>
+                <p>Research article on "Predicting the Future Without Cheating: Overcoming Lookahead Bias with the Window Method" - exploring best practices in backtesting trading strategies to avoid common pitfalls.</p>
+                <div class="project-tags">
+                    <span>Python</span>
+                    <span>Backtesting</span>
+                    <span>Research</span>
+                    <span>Technical Writing</span>
+                </div>
+                <div class="project-actions">
+                    <a href="https://github.com/Joshbazz" target="_blank" class="btn btn-outline">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                        Read Article
+                    </a>
+                </div>
+            </div>
+        </article>
+
+        <!-- Crypto Lending Analytics -->
+        <article class="project-card-large" data-category="data trading">
+            <div class="project-image">
+                <div class="project-icon-large">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
+                </div>
+            </div>
+            <div class="project-content">
+                <div class="project-meta">
+                    <span class="project-status completed">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="6"/></svg>
+                        Completed
+                    </span>
+                    <span class="project-category">Crypto / DeFi</span>
+                </div>
+                <h3>Crypto Lending Analytics</h3>
+                <p>Financial models developed at TradeStation Crypto to assess loan performance, counterparty exposure, and collateral adequacy. Supported scaling institutional crypto lending portfolio from $60M to $180M.</p>
+                <div class="project-tags">
+                    <span>Financial Modeling</span>
+                    <span>Risk Analysis</span>
+                    <span>Crypto</span>
+                    <span>DeFi</span>
+                </div>
+                <div class="project-actions">
+                    <a href="https://github.com/Joshbazz" target="_blank" class="btn btn-outline">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                        View Details
+                    </a>
+                </div>
+            </div>
+        </article>
+
+        <!-- Ticket Market Data Pipeline -->
+        <article class="project-card-large" data-category="data">
+            <div class="project-image">
+                <div class="project-icon-large">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+                </div>
+            </div>
+            <div class="project-content">
+                <div class="project-meta">
+                    <span class="project-status completed">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="6"/></svg>
+                        Completed
+                    </span>
+                    <span class="project-category">Data Engineering</span>
+                </div>
+                <h3>Market Data Pipeline</h3>
+                <p>Automated data extraction and analysis pipeline for secondary ticket market research. Integrates multiple data sources including SEO analytics, demographic data, and social signals for demand forecasting.</p>
+                <div class="project-tags">
+                    <span>Python</span>
+                    <span>SQL</span>
+                    <span>Data Pipeline</span>
+                    <span>Automation</span>
+                </div>
+                <div class="project-actions">
+                    <a href="https://github.com/Joshbazz" target="_blank" class="btn btn-outline">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                        View Code
+                    </a>
+                </div>
+            </div>
+        </article>
+
+        <!-- Pricing Strategy Tool -->
+        <article class="project-card-large" data-category="trading data">
+            <div class="project-image">
+                <div class="project-icon-large">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                </div>
+            </div>
+            <div class="project-content">
+                <div class="project-meta">
+                    <span class="project-status in-progress">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="6"/></svg>
+                        In Progress
+                    </span>
+                    <span class="project-category">Pricing</span>
+                </div>
+                <h3>Relative Value Pricing Engine</h3>
+                <p>Pricing strategy tool designed to enhance bid-offer decision quality in market-making operations. Assists with data model architecture, exploratory analysis, and automated strategy implementation.</p>
+                <div class="project-tags">
+                    <span>Python</span>
+                    <span>SQL</span>
+                    <span>Pricing</span>
+                    <span>Market Making</span>
+                </div>
+                <div class="project-actions">
+                    <a href="https://github.com/Joshbazz" target="_blank" class="btn btn-outline">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                        View Code
+                    </a>
+                </div>
+            </div>
+        </article>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>Designed & Built by Josh Bazzano</p>
+            <p class="footer-sub">Quantitative Analyst & Researcher</p>
+        </div>
+    </footer>
+
+    <script>
+        // Filter functionality
+        const filterTabs = document.querySelectorAll('.filter-tab');
+        const projectCards = document.querySelectorAll('.project-card-large');
+
+        filterTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Update active tab
+                filterTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                const filter = tab.dataset.filter;
+
+                // Filter projects
+                projectCards.forEach(card => {
+                    if (filter === 'all') {
+                        card.style.display = 'block';
+                    } else {
+                        const categories = card.dataset.category || '';
+                        if (categories.includes(filter)) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    }
+                });
+            });
+        });
+
+        // Navbar scroll effect
+        const nav = document.querySelector('.glass-nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenuBtn?.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
