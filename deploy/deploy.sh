@@ -14,7 +14,7 @@ NC='\033[0m'
 
 DOMAIN="joshbazzano.com"
 WEB_ROOT="/var/www/${DOMAIN}"
-REPO_URL="https://github.com/Joshbazz/first-repository.git"
+REPO_URL="https://github.com/Joshbazz/personal-website.git"
 BACKUP_DIR="/var/backups/website"
 
 echo -e "${GREEN}Starting deployment...${NC}"
@@ -38,6 +38,9 @@ echo -e "${YELLOW}Updating website files...${NC}"
 cp /tmp/website-repo/index.html ${WEB_ROOT}/
 cp /tmp/website-repo/styles.css ${WEB_ROOT}/
 cp /tmp/website-repo/projects.html ${WEB_ROOT}/
+cp /tmp/website-repo/404.html ${WEB_ROOT}/
+cp /tmp/website-repo/50x.html ${WEB_ROOT}/
+cp -r /tmp/website-repo/media ${WEB_ROOT}/
 
 # Set ownership
 chown -R www-data:www-data ${WEB_ROOT}
