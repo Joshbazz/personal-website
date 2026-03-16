@@ -27,7 +27,7 @@ fi
 DOMAIN="joshbazzano.com"
 EMAIL="joshbazz36@gmail.com"
 WEB_ROOT="/var/www/${DOMAIN}"
-REPO_URL="https://github.com/Joshbazz/first-repository.git"
+REPO_URL="https://github.com/Joshbazz/personal-website.git"
 
 echo -e "\n${YELLOW}Step 1: Updating system packages...${NC}"
 apt update && apt upgrade -y
@@ -55,6 +55,9 @@ echo -e "\n${YELLOW}Step 6: Copying website files...${NC}"
 cp /tmp/website-repo/index.html ${WEB_ROOT}/
 cp /tmp/website-repo/styles.css ${WEB_ROOT}/
 cp /tmp/website-repo/projects.html ${WEB_ROOT}/
+cp /tmp/website-repo/404.html ${WEB_ROOT}/
+cp /tmp/website-repo/50x.html ${WEB_ROOT}/
+cp -r /tmp/website-repo/media ${WEB_ROOT}/
 
 # Set proper ownership
 chown -R www-data:www-data ${WEB_ROOT}
