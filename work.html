@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work | Bazzano Technologies Inc</title>
+    <meta name="description" content="Selected client work and independent research from Bazzano Technologies Inc — quantitative systems, data pipelines, and machine learning.">
+    <meta property="og:title" content="Work | Bazzano Technologies Inc">
+    <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="business.css?v=2">
+</head>
+<body>
+    <div class="bg-gradient"></div>
+    <div class="bg-grid"></div>
+
+    <!-- Navigation -->
+    <nav class="glass-nav" id="navbar">
+        <a href="/" class="logo">
+            <span class="logo-mark">[BT]</span>
+            <span class="logo-text">&nbsp;Bazzano Technologies</span>
+        </a>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="services.html" class="nav-link">Services</a></li>
+            <li><a href="work.html" class="nav-link active">Work</a></li>
+            <li><a href="about.html" class="nav-link">About</a></li>
+            <li><a href="contact.html" class="nav-link">Contact</a></li>
+            <li><a href="josh.html" class="btn btn-outline" style="font-size:0.82rem;padding:0.5rem 1rem;">Personal Portfolio &#8594;</a></li>
+        </ul>
+        <button class="mobile-menu-btn" id="menu-btn" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- Page Hero -->
+    <div class="page-hero">
+        <span class="section-label">Portfolio</span>
+        <h1>Selected Work</h1>
+        <p>Selected client work and independent research. Details available upon request.</p>
+        <p class="work-note">Methodology for live trading systems is proprietary and not publicly disclosed.</p>
+    </div>
+
+    <!-- Featured Case Study -->
+    <div class="section" style="padding-top:1rem;">
+        <div class="section-header">
+            <span class="section-number">01</span>
+            <h2 class="section-title">Featured Case Study</h2>
+            <div class="section-line"></div>
+        </div>
+
+        <div class="case-study-card animate-on-scroll">
+            <span class="case-study-badge">&#9733; Featured Engagement</span>
+            <div class="work-tags" style="margin-bottom:1rem;">
+                <span class="work-tag">Quantitative Modeling</span>
+                <span class="work-tag">Automation</span>
+                <span class="work-tag">PostgreSQL</span>
+                <span class="work-tag">Data Pipeline</span>
+                <span class="work-tag">Backtesting</span>
+            </div>
+            <h2>NFL Quantitative Betting System</h2>
+
+            <div class="case-study-section">
+                <h4>The Problem</h4>
+                <p>Manual signal generation across data prep, model runs, and line-shopping across 8 books was consuming 4+ hours per week. Not scalable, not sustainable, and not repeatable.</p>
+            </div>
+
+            <div class="case-study-section">
+                <h4>The Approach</h4>
+                <p>Built a quantitative model combining multiple independent algorithms&mdash;each with different logic, different data sources, and different blind spots&mdash;so model failures don't compound, they cancel. Validated manually over a live test window before rebuilding as automated infrastructure. No capital was put at scale until edge was statistically confirmed.</p>
+            </div>
+
+            <div class="case-study-section">
+                <h4>The Results</h4>
+                <div class="stats-row">
+                    <div class="stat-item">
+                        <span class="stat-value">74</span>
+                        <span class="stat-label">Live Bets (Wk 2&ndash;8, 2024)</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">64.9%</span>
+                        <span class="stat-label">Win Rate (BE: 52.4%)</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">+11.61u</span>
+                        <span class="stat-label">Units Profit</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">+25.6%</span>
+                        <span class="stat-label">ROI</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">75%+</span>
+                        <span class="stat-label">Positive CLV</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="case-study-section">
+                <h4>The Rebuild</h4>
+                <p>After proving the edge, rebuilt from scratch as production infrastructure:</p>
+                <div class="rebuild-list" style="margin-top:0.75rem;">
+                    <span class="rebuild-item">Automated data pipeline with live ingestion</span>
+                    <span class="rebuild-item">PostgreSQL database with full schema versioning</span>
+                    <span class="rebuild-item">Rigorous backtesting across historical seasons</span>
+                    <span class="rebuild-item">Dashboards for visualization &amp; model monitoring</span>
+                    <span class="rebuild-item">Automated line scraping + EV alerting</span>
+                    <span class="rebuild-item">Full test coverage across every layer</span>
+                </div>
+                <p style="margin-top:1rem; color:var(--success); font-weight:600;">What took 4 hours/week now runs in minutes.</p>
+            </div>
+
+            <div class="case-study-section">
+                <h4>Roadmap</h4>
+                <p>Architecture built to scale to NCAA Football, NCAA Basketball, and NBA. Future product: direct signal access for qualified clients.</p>
+            </div>
+
+            <p class="proprietary-note">The underlying model methodology is proprietary and not disclosed. Results are from a live test window, not backtested simulations.</p>
+        </div>
+    </div>
+
+    <!-- Other Work -->
+    <div class="section" style="padding-top:1rem;">
+        <div class="section-header">
+            <span class="section-number">02</span>
+            <h2 class="section-title">Other Engagements</h2>
+            <div class="section-line"></div>
+        </div>
+
+        <div class="work-grid" style="grid-template-columns:repeat(auto-fit, minmax(340px, 1fr)); gap:1.25rem;">
+
+            <div class="work-card animate-on-scroll">
+                <h3>Real-Time Market Data Infrastructure</h3>
+                <div class="work-tags">
+                    <span class="work-tag">Python</span>
+                    <span class="work-tag">WebSocket</span>
+                    <span class="work-tag">SQLite</span>
+                    <span class="work-tag">Cloud</span>
+                </div>
+                <p>Cloud-based pipeline capturing live prediction market microstructure from Polymarket. 650K+ rows, 13K+ trades collected. Early analysis surfacing potential alpha in tail-size trades and asymmetric position dynamics.</p>
+            </div>
+
+            <div class="work-card animate-on-scroll">
+                <h3>Deep Learning Price Prediction</h3>
+                <div class="work-tags">
+                    <span class="work-tag">Python</span>
+                    <span class="work-tag">TensorFlow</span>
+                    <span class="work-tag">Keras</span>
+                    <span class="work-tag">Optuna</span>
+                </div>
+                <p>LSTM-based deep learning model for t+1 Bitcoin price prediction using Fear and Greed Index as a feature, with hyperparameter tuning via Optuna. Full training, validation, and evaluation pipeline.</p>
+            </div>
+
+            <div class="work-card animate-on-scroll">
+                <h3>Neural Network Trading System</h3>
+                <div class="work-tags">
+                    <span class="work-tag">Python</span>
+                    <span class="work-tag">Deep Learning</span>
+                    <span class="work-tag">Backtesting</span>
+                </div>
+                <p>End-to-end neural network trading system with data preprocessing, model training, backtesting engine, and performance evaluation. Built for extensibility across multiple market regimes.</p>
+            </div>
+
+            <div class="work-card animate-on-scroll">
+                <h3>NFL Ticket Market Research</h3>
+                <div class="work-tags">
+                    <span class="work-tag">Research</span>
+                    <span class="work-tag">Statistical Modeling</span>
+                    <span class="work-tag">Data Visualization</span>
+                </div>
+                <p>120-page quantitative research report on multi-season NFL ticket market dynamics. 1,000+ visualizations, probabilistic modeling across primary and secondary markets. Informed $1.1M+ in revenue-generating trading decisions.</p>
+            </div>
+
+            <div class="work-card animate-on-scroll">
+                <h3>Implied Volatility Surface Models</h3>
+                <div class="work-tags">
+                    <span class="work-tag">Python</span>
+                    <span class="work-tag">Volatility Modeling</span>
+                    <span class="work-tag">Derivatives</span>
+                </div>
+                <p>Built implied volatility models across 15 commodity, currency, and index futures markets. Used for daily P&amp;L and derivatives book risk management at an institutional hedge fund.</p>
+            </div>
+
+            <div class="work-card animate-on-scroll">
+                <h3>Crypto Lending Portfolio Analytics</h3>
+                <div class="work-tags">
+                    <span class="work-tag">Financial Modeling</span>
+                    <span class="work-tag">Risk Analysis</span>
+                    <span class="work-tag">Portfolio</span>
+                </div>
+                <p>Developed financial models for loan performance, counterparty exposure, and collateral adequacy to support institutional crypto lending operations. Contributed to scaling the portfolio from $60M to $180M.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- CTA Banner -->
+    <div class="cta-banner">
+        <div class="cta-banner-inner">
+            <h2>Interested in working together?</h2>
+            <p>Reach out to discuss your project. Most engagements start with a 30-minute discovery call.</p>
+            <a href="contact.html" class="btn btn-primary btn-lg">Start a Conversation</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-top">
+                <a href="/" class="logo">
+                    <span class="logo-mark">[BT]</span>
+                    <span class="logo-text">&nbsp;Bazzano Technologies Inc</span>
+                </a>
+                <nav class="footer-nav">
+                    <a href="services.html">Services</a>
+                    <a href="work.html">Work</a>
+                    <a href="about.html">About</a>
+                    <a href="contact.html">Contact</a>
+                </nav>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Bazzano Technologies Inc. All rights reserved. &mdash; <a href="mailto:joshbazz36@gmail.com">joshbazz36@gmail.com</a></p>
+                <p class="footer-note">Designed &amp; built in-house.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        const menuBtn = document.getElementById('menu-btn');
+        const navLinks = document.getElementById('nav-links');
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.05, rootMargin: '0px 0px -30px 0px' });
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
