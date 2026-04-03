@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css?v=4">
     <script>
-        (function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);})();
+        (function(){var t=localStorage.getItem('theme');document.documentElement.setAttribute('data-theme',t||'light');})();
     </script>
 </head>
 <body>
@@ -669,14 +669,9 @@
         const themeToggle = document.getElementById('theme-toggle');
         themeToggle.addEventListener('click', () => {
             const current = document.documentElement.getAttribute('data-theme');
-            const next = current === 'light' ? null : 'light';
-            if (next) {
-                document.documentElement.setAttribute('data-theme', next);
-                localStorage.setItem('theme', next);
-            } else {
-                document.documentElement.removeAttribute('data-theme');
-                localStorage.removeItem('theme');
-            }
+            const next = current === 'light' ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
         });
 
         // Smooth scroll for navigation links
