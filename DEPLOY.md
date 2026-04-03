@@ -19,7 +19,7 @@ This guide walks you through hosting your portfolio website on a Digital Ocean D
 │  │                      │                            │  │
 │  │                      ▼                            │  │
 │  │  ┌─────────────────────────────────────────────┐  │  │
-│  │  │           /var/www/joshbazzano.com          │  │  │
+│  │  │           /var/www/bazzanotech.com          │  │  │
 │  │  │  - index.html                               │  │  │
 │  │  │  - styles.css                               │  │  │
 │  │  │  - projects.html                            │  │  │
@@ -31,7 +31,7 @@ This guide walks you through hosting your portfolio website on a Digital Ocean D
 ## Requirements
 
 - Digital Ocean account
-- Domain name (joshbazzano.com) with DNS configured
+- Domain name (bazzanotech.com) with DNS configured
 - SSH key for secure access
 
 ## Cost Estimate
@@ -75,7 +75,7 @@ Point your domain to your Droplet:
      ```
 
 2. **In Digital Ocean** (Networking → Domains):
-   - Add your domain: `joshbazzano.com`
+   - Add your domain: `bazzanotech.com`
    - Create A records:
      ```
      @    → Your Droplet IP
@@ -83,7 +83,7 @@ Point your domain to your Droplet:
      ```
 
 3. **Wait for DNS propagation** (can take up to 48 hours, usually faster)
-   - Check with: `dig joshbazzano.com`
+   - Check with: `dig bazzanotech.com`
 
 ---
 
@@ -144,7 +144,7 @@ The setup script will:
    ```
 
 2. **Test your website:**
-   - Open https://joshbazzano.com in a browser
+   - Open https://bazzanotech.com in a browser
    - Verify SSL certificate (padlock icon)
 
 3. **Check SSL certificate:**
@@ -179,20 +179,20 @@ Or set up a webhook for automatic deployments (see Advanced section).
 ## Directory Structure on Server
 
 ```
-/var/www/joshbazzano.com/
+/var/www/bazzanotech.com/
 ├── index.html          # Main portfolio page
 ├── styles.css          # Stylesheet
 └── projects.html       # Projects page
 
 /etc/nginx/
 ├── sites-available/
-│   └── joshbazzano.com # Nginx config
+│   └── bazzanotech.com # Nginx config
 └── sites-enabled/
-    └── joshbazzano.com # Symlink
+    └── bazzanotech.com # Symlink
 
 /etc/letsencrypt/
 └── live/
-    └── joshbazzano.com/
+    └── bazzanotech.com/
         ├── fullchain.pem
         └── privkey.pem
 ```
@@ -206,7 +206,7 @@ Or set up a webhook for automatic deployments (see Advanced section).
 sudo systemctl status nginx      # Check status
 sudo systemctl restart nginx     # Restart
 sudo nginx -t                    # Test config
-sudo tail -f /var/log/nginx/joshbazzano.com.access.log  # View logs
+sudo tail -f /var/log/nginx/bazzanotech.com.access.log  # View logs
 
 # SSL
 sudo certbot certificates        # List certificates
@@ -254,11 +254,11 @@ sudo tail -f /var/log/letsencrypt/letsencrypt.log
 ### DNS not resolving
 ```bash
 # Check DNS propagation
-dig joshbazzano.com
-nslookup joshbazzano.com
+dig bazzanotech.com
+nslookup bazzanotech.com
 
 # Verify A records point to your IP
-dig +short joshbazzano.com
+dig +short bazzanotech.com
 ```
 
 ---

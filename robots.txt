@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://joshbazzano.com/sitemap.xml
+Sitemap: https://bazzanotech.com/sitemap.xml

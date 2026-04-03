@@ -2,7 +2,7 @@
 
 # ============================================
 # Digital Ocean Droplet Setup Script
-# For hosting joshbazzano.com
+# For hosting bazzanotech.com
 # ============================================
 
 set -e
@@ -14,7 +14,7 @@ YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
 echo -e "${GREEN}========================================${NC}"
-echo -e "${GREEN}  Portfolio Website Setup Script${NC}"
+echo -e "${GREEN}  Website Setup Script${NC}"
 echo -e "${GREEN}========================================${NC}"
 
 # Check if running as root
@@ -24,7 +24,8 @@ if [ "$EUID" -ne 0 ]; then
 fi
 
 # Variables - UPDATE THESE
-DOMAIN="joshbazzano.com"
+DOMAIN="bazzanotech.com"
+OLD_DOMAIN="joshbazzano.com"
 EMAIL="joshbazz36@gmail.com"
 WEB_ROOT="/var/www/${DOMAIN}"
 REPO_URL="https://github.com/Joshbazz/personal-website.git"
@@ -54,9 +55,17 @@ git clone ${REPO_URL} /tmp/website-repo
 echo -e "\n${YELLOW}Step 6: Copying website files...${NC}"
 cp /tmp/website-repo/index.html ${WEB_ROOT}/
 cp /tmp/website-repo/styles.css ${WEB_ROOT}/
+cp /tmp/website-repo/business.css ${WEB_ROOT}/
+cp /tmp/website-repo/josh.html ${WEB_ROOT}/
 cp /tmp/website-repo/projects.html ${WEB_ROOT}/
+cp /tmp/website-repo/services.html ${WEB_ROOT}/
+cp /tmp/website-repo/work.html ${WEB_ROOT}/
+cp /tmp/website-repo/about.html ${WEB_ROOT}/
+cp /tmp/website-repo/contact.html ${WEB_ROOT}/
 cp /tmp/website-repo/404.html ${WEB_ROOT}/
 cp /tmp/website-repo/50x.html ${WEB_ROOT}/
+cp /tmp/website-repo/sitemap.xml ${WEB_ROOT}/
+cp /tmp/website-repo/robots.txt ${WEB_ROOT}/
 cp -r /tmp/website-repo/media ${WEB_ROOT}/
 
 # Set proper ownership
@@ -68,8 +77,8 @@ cat > /etc/nginx/sites-available/${DOMAIN} << 'NGINX_CONF'
 server {
     listen 80;
     listen [::]:80;
-    server_name joshbazzano.com www.joshbazzano.com;
-    root /var/www/joshbazzano.com;
+    server_name bazzanotech.com www.bazzanotech.com;
+    root /var/www/bazzanotech.com;
     index index.html;
 
     location / {
@@ -86,11 +95,14 @@ rm -f /etc/nginx/sites-enabled/default
 nginx -t
 systemctl reload nginx
 
-echo -e "\n${YELLOW}Step 8: Obtaining SSL certificate...${NC}"
+echo -e "\n${YELLOW}Step 8: Obtaining SSL certificates...${NC}"
+# Get cert for new domain
 certbot --nginx -d ${DOMAIN} -d www.${DOMAIN} --non-interactive --agree-tos --email ${EMAIL}
+# Get cert for old domain (needed for HTTPS redirect)
+certbot --nginx -d ${OLD_DOMAIN} -d www.${OLD_DOMAIN} --non-interactive --agree-tos --email ${EMAIL}
 
 echo -e "\n${YELLOW}Step 9: Updating Nginx with full SSL configuration...${NC}"
-# Copy the full nginx config
+# Copy the full nginx config (includes redirect from old domain)
 cp /tmp/website-repo/deploy/nginx.conf /etc/nginx/sites-available/${DOMAIN}
 
 # Test and reload
@@ -109,6 +121,7 @@ echo -e "${GREEN}  Setup Complete!${NC}"
 echo -e "${GREEN}========================================${NC}"
 echo -e "\nYour website should now be live at:"
 echo -e "  ${GREEN}https://${DOMAIN}${NC}"
+echo -e "\n${OLD_DOMAIN} will redirect to ${DOMAIN}"
 echo -e "\nUseful commands:"
 echo -e "  - Check Nginx status: ${YELLOW}systemctl status nginx${NC}"
 echo -e "  - View access logs: ${YELLOW}tail -f /var/log/nginx/${DOMAIN}.access.log${NC}"

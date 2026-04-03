@@ -12,7 +12,7 @@ GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 NC='\033[0m'
 
-DOMAIN="joshbazzano.com"
+DOMAIN="bazzanotech.com"
 WEB_ROOT="/var/www/${DOMAIN}"
 REPO_URL="https://github.com/Joshbazz/personal-website.git"
 BACKUP_DIR="/var/backups/website"
