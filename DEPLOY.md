@@ -64,36 +64,30 @@ This guide walks you through hosting your portfolio website on a Digital Ocean D
 
 ## Step 2: Configure DNS
 
-Point your domain to your Droplet:
+DNS is managed via **Cloudflare** (domain registrar for bazzanotech.com):
 
-1. **In your domain registrar** (GoDaddy, Namecheap, etc.):
-   - Set nameservers to Digital Ocean:
+1. **In Cloudflare** (DNS → Records for bazzanotech.com):
+   - Create A records (Proxy status: **DNS only** / gray cloud):
      ```
-     ns1.digitalocean.com
-     ns2.digitalocean.com
-     ns3.digitalocean.com
+     @    → 137.184.214.204
+     www  → 137.184.214.204
      ```
+   - Keep existing MX/TXT records for Google email
 
-2. **In Digital Ocean** (Networking → Domains):
-   - Add your domain: `bazzanotech.com`
-   - Create A records:
-     ```
-     @    → Your Droplet IP
-     www  → Your Droplet IP
-     ```
+2. **joshbazzano.com** DNS stays on Digital Ocean, pointing at the same IP for redirect
 
-3. **Wait for DNS propagation** (can take up to 48 hours, usually faster)
+3. **Wait for DNS propagation** (usually minutes with Cloudflare)
    - Check with: `dig bazzanotech.com`
 
 ---
 
 ## Step 3: Initial Server Setup
 
-SSH into your droplet and run these commands:
+SSH into your droplet as root:
 
 ```bash
-# Connect to your server
-ssh root@YOUR_DROPLET_IP
+# Connect to your server (root access only, no josh user configured)
+ssh root@137.184.214.204
 
 # Update the system
 apt update && apt upgrade -y

@@ -48,6 +48,7 @@ cp /tmp/website-repo/404.html ${WEB_ROOT}/
 cp /tmp/website-repo/50x.html ${WEB_ROOT}/
 cp /tmp/website-repo/sitemap.xml ${WEB_ROOT}/
 cp /tmp/website-repo/robots.txt ${WEB_ROOT}/
+cp /tmp/website-repo/favicon.svg ${WEB_ROOT}/
 cp -r /tmp/website-repo/media ${WEB_ROOT}/
 
 # Set ownership

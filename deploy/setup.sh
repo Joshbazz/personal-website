@@ -26,7 +26,7 @@ fi
 # Variables - UPDATE THESE
 DOMAIN="bazzanotech.com"
 OLD_DOMAIN="joshbazzano.com"
-EMAIL="joshbazz36@gmail.com"
+EMAIL="josh@bazzanotech.com"
 WEB_ROOT="/var/www/${DOMAIN}"
 REPO_URL="https://github.com/Joshbazz/personal-website.git"
 

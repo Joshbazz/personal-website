@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About | Bazzano Technologies Inc</title>
     <meta name="description" content="About Bazzano Technologies Inc — a boutique technology consulting firm founded by Josh Bazzano, quantitative analyst and researcher based in New York, NY.">
@@ -10,7 +11,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="business.css?v=2">
+    <link rel="stylesheet" href="business.css?v=3">
+    <script>
+        (function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);})();
+    </script>
 </head>
 <body>
     <div class="bg-gradient"></div>
@@ -27,8 +31,15 @@
             <li><a href="work.html" class="nav-link">Work</a></li>
             <li><a href="about.html" class="nav-link active">About</a></li>
             <li><a href="contact.html" class="nav-link">Contact</a></li>
-            <li><a href="josh.html" class="btn btn-outline" style="font-size:0.82rem;padding:0.5rem 1rem;">Personal Portfolio &#8594;</a></li>
+            <li><a href="josh.html" class="nav-link" style="font-size:0.82rem;">Portfolio</a></li>
+            <li><a href="https://calendly.com/josh-bazzanotech" target="_blank" class="btn btn-primary" style="font-size:0.82rem;padding:0.5rem 1rem;">Book a Call</a></li>
         </ul>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark mode">
+            <div class="theme-toggle-knob">
+                <svg class="icon-moon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                <svg class="icon-sun" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+            </div>
+        </button>
         <button class="mobile-menu-btn" id="menu-btn" aria-label="Menu">
             <span></span><span></span><span></span>
         </button>
@@ -72,7 +83,7 @@
                     </div>
                     <div class="company-detail">
                         <span class="detail-label">Focus</span>
-                        <span class="detail-value">Data, Quant Systems, Software, AI/ML</span>
+                        <span class="detail-value">Web Design, Data, Software, AI/ML</span>
                     </div>
                 </div>
             </div>
@@ -190,7 +201,10 @@
         <div class="cta-banner-inner">
             <h2>Let&rsquo;s build something together.</h2>
             <p>Ready to talk about your project? We&rsquo;re straightforward to work with.</p>
-            <a href="contact.html" class="btn btn-primary btn-lg">Get in Touch</a>
+            <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+                <a href="https://calendly.com/josh-bazzanotech" target="_blank" class="btn btn-primary btn-lg">Book a Discovery Call</a>
+                <a href="contact.html" class="btn btn-outline btn-lg">Send a Message</a>
+            </div>
         </div>
     </div>
 
@@ -210,13 +224,27 @@
                 </nav>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Bazzano Technologies Inc. All rights reserved. &mdash; <a href="mailto:joshbazz36@gmail.com">joshbazz36@gmail.com</a></p>
+                <p>&copy; 2026 Bazzano Technologies Inc. All rights reserved. &mdash; <a href="mailto:hello@bazzanotech.com">hello@bazzanotech.com</a></p>
                 <p class="footer-note">Designed &amp; built in-house.</p>
             </div>
         </div>
     </footer>
 
     <script>
+        // Theme toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        themeToggle.addEventListener('click', () => {
+            const current = document.documentElement.getAttribute('data-theme');
+            const next = current === 'light' ? null : 'light';
+            if (next) {
+                document.documentElement.setAttribute('data-theme', next);
+                localStorage.setItem('theme', next);
+            } else {
+                document.documentElement.removeAttribute('data-theme');
+                localStorage.removeItem('theme');
+            }
+        });
+
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
             navbar.classList.toggle('scrolled', window.scrollY > 50);
